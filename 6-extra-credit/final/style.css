@@ -1,0 +1,32 @@
+html, body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.axis path {
+  display: none;
+}
+
+.axis line {
+  stroke: rgba(0,0,0,0.1);
+}
+
+path.country {
+  fill: none;
+  stroke: rgba(0,0,0,0.3);
+}
+
+path.country.highlight {
+  stroke: rgba(0,0,0,1);
+}
+
+path.voronoi {
+  opacity: 0;
+}
+
+text.country-label {
+  opacity: 0.2;
+}
+
+text.country-label.highlight {
+  opacity: 1;
+}
