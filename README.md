@@ -1,33 +1,50 @@
-# intro-to-d3-nicar-2020
+# Introduction to D3 at NICAR 2020
+
 Bring your data to life with elegant and intelligent visualizations with the D3 JavaScript library. We'll start with some Scalable Vector Graphics (SVG) basics and learn what makes the D3 library so powerful, then use real-world datasets to build your first D3 chart. We will build on D3 basics by exploring more complex chart forms, covering functions for fetching and manipulating data, and introducing transitions and interaction. We will write working code together, break down how some of our favorite examples of D3 charts work and practice reading documentation so you can gain expertise on your own.
 
-
 Prerequisites: Attendees should have some knowledge of HTML/CSS and JavaScript. Previous D3 experience is not required.
+Instructors: [Darla Cameron](https://www.texastribune.org/about/staff/darla-cameron/) from the Texas Tribune and [John Muyskens](https://www.washingtonpost.com/people/john-muyskens/) from the Washington Post
+
+#### What is [D3](https://d3js.org/)?
+- While we often use it to make charts, D3 is not a charting library!
+- D3 is a JavaScript framework for manipulating documents and the DOM with data
+- The 3 Ds stand for **Data Driven Documents**
+
+#### When should you use D3?
+- Techy graphics teams used to use D3 for every chart, but we've learned better. In our newsrooms, we try to limit usage to when we need to be extra creative with visualization shape, do some fancy transitions or update a graphic regularly. For example:
+	- The Washington Post's [police shootings database](https://www.washingtonpost.com/graphics/investigations/police-shootings-database/), which includes lots of dynamic charts and updates annually.
+	- The Washington Post's [coronavirus tracker](https://www.washingtonpost.com/world/2020/01/22/mapping-spread-new-coronavirus/?arc404=true), a dynamic map which was updated multiple times per day during the outbreak.
+	- The Texas Tribune's [migration tracker](https://apps.texastribune.org/features/2019/migrant-texas-border-trump-policies/), which updates monthly and has dynamic charts. 
+	- The Texas Tribune's [political district competitiveness index](https://apps.texastribune.org/features/2019/texas-turn-blue-voting-pattern-history/), where charts form an interactive narrative.
+- If you want to make a basic chart or map for the web that *doesn’t* need to be interactive, be republished regularly or use a super-creative shape, we highly recommend good ol’ Adobe Illustrator + [ai2html](http://ai2html.org/) or [Datawrapper](https://www.datawrapper.de/)
+
+#### What we're going to learn today
+- First, what do **you** want to learn? Have any of you tried to learn D3 and gotten stuck?
+	- We hope you leave here today basic terminology and concepts, and a foundation for getting yourself un-stuck when you inevitably run into something that doesn't work as expected. (This happens to every programmer, every day!)
+- We will have you work through each of the exercises in this repository in pairs. Introduce yourself to your neighbor! 
+- Here's how *pair programming* works:
+	- One person types the code and the other has documentation open, telling the typer what to do. 
+	- Why pair program? Most errors are typos, and this saves you from swapping between documentation and the code.
 
 
+## JavaScript and data types refresher
 
-1. Intro - Darla
-	- What is D3? (not a charting library) What is it good for and when should you use it? (sparingly, things that need lots of updates)
-	- What is an SVG, and what is the best way to get one onto your site or in the paper? (crowbar + ai2html) 
 
-2. Start coding- Darla
+D- 0. JS refresher (30 minutes)
+Two new-ish JS things I would like to use because they make d3 code way simpler: arrow functions and template literals
+Promises. Don’t really need to explain how they work, just basically go over syntax. We can drop this and do it with callbacks if this is too complex.
+what’s really going on when you “chain” functions together (this could otherwise be covered in the d3 section, or the modifying data section)
+
 - Quick refresher on JS data types frequently seen in d3
 	- numbers, strings, boolean 
 	- arrays
 	- objects
 	- objects inside arrays
-- Use D3 to draw some non-SVG chart-like elements on the page
-	- First time we'll present the concept, let them work for 10 minutes, then solve together
 
-3. Getting data- John
-	- Fetching data
-	- Manipulating data
 
-4. Make your first chart- John
-	- A more complex chart
+- D3 requires quite a lot of JavaScript knowledge, mostly because some of the initail   How many of you have tried to adapt one 
 
-4. Transitions and interaction (John)
-- A bit of this plus coolest features of v5 (and pitfalls if you have used earlier versions)
+
 
 5. What's next? Our favorite resources and how to make this useful at home. 
 	- [The 2019 version of this class](https://github.com/csessig86/intro-to-d3-nicar-19)
