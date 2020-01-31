@@ -151,11 +151,10 @@ d3.select("body").append("p").text("Hello World!");
 ```
 
 ## Part one: D3 draws SVGs
-SVG stands for **scalable vector graphic** and it's an XML format that we often use to draw two-dimensional shapes in D3. SVG shapes are made up of `path` elements.
-- D3 comes with handy generators to help you draw paths into specific chart shapes, such as line, area, stack, arc, pie and symbol.
+SVG stands for **scalable vector graphic** and it's an XML format that we often use to draw two-dimensional shapes in D3. D3 comes with handy generators to help you draw into specific chart elements and shapes, such as circle, line, area, stack, arc, pie and symbol.
 
-### How they work:
-- SVGs have tags and look a lot like HTML, but they have different properties and enable us to use geometry to draw shapes.
+#### How SVGs work:
+- SVGs have tags and look a lot like HTML, but they have different attributes and enable us to use geometry to draw shapes.
 ```html 
 <svg width="100" height="100">
   <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
