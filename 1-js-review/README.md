@@ -1,15 +1,16 @@
 # JS Review + SVGs
-We'll start class with a refresher on JavaScript and data types, and move into SVGs.
+We'll start class with a quick refresher on JavaScript and data types, and move into SVGs.
 
-## D3 requires JavaScript
+## Part one: D3 requires JavaScript
 - Here's why: it's relatively easy to duplicate one of the cool-looking [examples](https://github.com/d3/d3/wiki/Gallery) in D3's documentation. But without a working knowledge of JavaScript, it's much harder to adapt those examples to your data.
 
-#### What is JS, again?
+### What is JavaScript, again?
 - JavaScript is one of the three core technologies that make the internet, along with HTML and CSS. 
 	- JS is run in the browser and is primarily used for adding, removing and interacting with elements on a page. 
-	- HTML makes up the elements on the page, and CSS is used to style or change the appearance of these elements.
-- Javascript is typically stored in .js files. It can also be written in html pages. Today, we'll keep your javascript in one or several .js files, which is a good practice as your code gets more complicated.
-- You can paste these examples into a browser console to see how they work. 
+	- HTML makes up the elements on the page
+	- CSS is used to style or change the appearance of these elements.
+- JS is typically stored in .js files. It can also be written in html pages. Today, we'll keep your javascript in one or several .js files, which is a good practice as your code gets more complicated.
+- For now, you can paste these examples into a browser console in order to see how they work.
 
 #### Variables 
 - Variables allow you store pieces of information to use or manipulate later in a JavaScript file.
@@ -30,12 +31,9 @@ string += ' the best programming language ever'; // This will return 'JavaScript
 
 - Sometimes it's easy to lose track of the type of a piece of data. The typeof() operand can tell you what's what. 	
 ```javascript
-var number = 5 + 10; // This is a number
-var string = 'JavaScript is '; // This is a string
-var boolean = TRUE // This is a true/false value
-
 typeof(number) // returns number
 typeof(15) // returns number
+typeof(string) // returns string
 typeof(boolean) // returns boolean
 ```
 
@@ -43,7 +41,7 @@ typeof(boolean) // returns boolean
 When using D3, we're usually working with files containing hundreds or thousands of rows, often stored as JSON. Here's the components of those files. 
 
 1. Data type: Arrays
-- You can group numbers and strings into one variable using arrays.
+You can store numbers and strings together in one variable using arrays.
 ```javascript
 var array_one = [10, 15, 20]; // Arrays are groups of numbers
 
@@ -63,7 +61,7 @@ array_two[2] // returns "New Orleans"
 ```
 
 2. Data type: Objects
-- You can also store data using named attributes. These are called objects.
+You can also store data using named attributes. These are called objects.
 ```javascript
 var object_one = {
   "artist": "Louis Armstrong",
@@ -77,7 +75,7 @@ object_one["stars"] // returns 5
 ```
 
 3. Objects inside an array
-* You can also store objects inside arrays. You can store as many as you want.
+You can store objects inside arrays. You can store as many as you want.
 ```javascript
 var array_object = [{
   "artist": "Prince",
@@ -93,11 +91,12 @@ array_object[0]["artist"] // returns "Prince"
 array_object[1]["artist"] // returns "Funkadelic"
 ```
 
-- Understanding data types is very important as you work with D3. Often times, your data will look like objects inside of an array. For instance, if you're working with a CSV file, D3 will convert it into an array with each row in the spreadsheet being it's own object inside of that array.
+#### Why does this matter?
+- Understanding data types is very important as you work with D3. Often, the data that you are charting in D3 will look like objects inside of an array. For instance, if you're working with a CSV file, D3 will convert it into an array with each row in the spreadsheet as an object inside of the array.
 - For more JS basics, see the first section of the [2019 D3 class at NICAR](https://github.com/csessig86/intro-to-d3-nicar-19/tree/master/01-intro-to-js), when JS wasn't a prerequisite. The free e-book [Eloquent Javascript](https://eloquentjavascript.net/) is also a great place to learn.
 
-#### Advanced JS concepts that are good to know for D3
-1. [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions): This is a shorter way of writing functions, which are repeatable blocks of code.
+### Four advanced JS concepts that are good to know for D3
+1. [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) are a shorter way of writing functions, which are repeatable blocks of code.
 ```javascript
 var sandwiches = [
   'PoBoy',
@@ -142,7 +141,7 @@ myFirstPromise.then((successMessage) => {
 });
 ```
 
-4. [Chaining functions](https://www.tutorialsteacher.com/d3js/method-chaining-in-d3js) are frequently seen in D3 to keep code neat and tidy. 
+4. [Chained functions](https://www.tutorialsteacher.com/d3js/method-chaining-in-d3js) are frequently seen in D3 to keep code neat and tidy. (This example won't work in the console because we haven't loaded D3 yet!)
 ```javascript
 // standard JS
 document.querySelector("#myDiv").text("Some text").attr("style", "color:red")
@@ -151,36 +150,29 @@ document.querySelector("#myDiv").text("Some text").attr("style", "color:red")
 d3.select("body").append("p").text("Hello World!");
 ```
 
-## D3 draws SVGs
-SVG stands for **scalable vector graphic** and it's a flexible XML format that we often use to draw shapes in D3.
-
-SVG shapes are made up of <path> elements
+## Part one: D3 draws SVGs
+SVG stands for **scalable vector graphic** and it's an XML format that we often use to draw two-dimensional shapes in D3. SVG shapes are made up of `path` elements.
 - D3 comes with handy generators to help you draw paths into specific chart shapes, such as line, area, stack, arc, pie and symbol.
 
 ### How they work:
 - SVGs have tags and look a lot like HTML, but they have different properties and enable us to use geometry to draw shapes.
-
-TO DO:
-GET A BIT MORE INTO M, H, V, L https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
-- THEN SAY, D3 DOES THIS FOR US! 
-
-COVER CX, CY, R 
-
-
 ```html 
 <svg width="100" height="100">
   <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
 </svg>
 ```
+- SVGs are two dimensional, and we can use them to chart  on an X and Y plane. Here, `cx` is the x location of the circle, `cy` is the x location and `r` is the radius. 
+- SVGs uses style attributes that are similar to HTML and CSS but just different enough to be annoying sometimes. Note the use of `stroke-width` instead of `border`!
 
+#### Exercise
+- Take a couple minutes with your partner to look at this tutorial on [paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
+- Here's documentation on possible [SVG style attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute).
+- Then, in the index.html file of this folder, draw at least two different path shapes in an SVG. Then we'll share a couple examples with the class.
 
-### Try it yourself:
-- With your partner, Google "SVG syntax" and try to draw a few shapes in the index file.
-- 
 #### Pro tip:
 - Adobe Illustrator reads SVGs, and the New York Times graphics team made a great Chrome plugin called [SVG Crowbar](https://nytimes.github.io/svg-crowbar/) that makes it easy to export an SVG from a webpage and open it in Illustrator. A workflow that we like is drawing a crazy shape in D3, Crowbar'ing it out of the browser, editing in Illustrator and publishing with [ai2html](http://ai2html.org/), another free tool from NYT graphics. Here's [an example](https://www.washingtonpost.com/graphics/politics/kushner-conflicts/?utm_term=.8bbce7210bc5) from Darla's days at the Post. 
 
-### Now we'll start using D3!
+### Next, we'll start using D3!
 
 
 
