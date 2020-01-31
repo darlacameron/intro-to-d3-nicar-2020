@@ -150,7 +150,7 @@ document.querySelector("#myDiv").text("Some text").attr("style", "color:red")
 d3.select("body").append("p").text("Hello World!");
 ```
 
-## Part one: D3 draws SVGs
+## Part two: D3 draws SVGs
 SVG stands for **scalable vector graphic** and it's an XML format that we often use to draw two-dimensional shapes in D3. D3 comes with handy generators to help you draw into specific chart elements and shapes, such as circle, line, area, stack, arc, pie and symbol.
 
 #### How SVGs work:
