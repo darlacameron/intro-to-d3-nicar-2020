@@ -19,8 +19,8 @@ let snowBody = svg.append('g')
 
 let circles = [
   {'r': 60, 'cx': 150, 'cy': 230},
-  {'r', 40, 'cx': 150, 'cy', 150},
-  {'r', 30, 'cx': 150, 'cy': 90}
+  {'r': 40, 'cx': 150, 'cy': 150},
+  {'r': 30, 'cx': 150, 'cy': 90}
 ]
 
 snowBody.selectAll('circle')
