@@ -1,4 +1,5 @@
 function sculptData(raw) {
+  console.log(raw);
   let data = raw.map(d => {
     d.healthExpPerCapita = +d.healthExpPerCapita
     d.year = +d.year
@@ -31,10 +32,16 @@ let svg = d3.select('div#chart')
 let scale = d3.scaleLinear()
   .range([0, width])
 
+let scaleY = d3.scaleBand()
+  .domain(d3.range(0, 10))
+  .range([0, height])
+  .padding(0.05)
+
+
 function render(raw) {
   let data = raw
     .sort((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
-    .slice(0, 15)
+    .slice(0, 10)
 
   let maxValue = d3.max(data, d => +d.healthExpPerCapita)
 
@@ -45,8 +52,9 @@ function render(raw) {
     .enter().append('rect')
     .style('fill', '#000')
     .attr('width', d => scale(+d.healthExpPerCapita))
-    .attr('height', 20)
-    .attr('transform', (d, i) => `translate(0, ${i * 25})`)
+    .attr('height', scaleY.bandwidth())
+    .attr('y', (d, i) => scaleY(i))
+    .attr('x', 0)
 }
 
 d3.csv('../../data/oecd.csv')
