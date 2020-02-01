@@ -26,7 +26,7 @@ let circles = [
 snowBody.selectAll('circle')
   .data(circles)
   .enter().append('circle')
-  .attr('r' d => d.r)
+  .attr('r', d => d.r)
   .attr('cx', d => d.cx)
   .attr('cy', d => d.cy)
 

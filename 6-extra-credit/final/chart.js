@@ -3,9 +3,6 @@ let margin = {top: 30, right: 10, left: 50, bottom: 10}
 let width = 700 - margin.right - margin.left
 let height = 700 - margin.top - margin.bottom
 
-// because we are hot loading:
-if (window.timer) window.timer.stop()
-d3.selectAll('svg').remove()
 const DURATION = 200
 
 let svg = d3.select('div#chart')
@@ -54,7 +51,7 @@ let render = (data) => {
       update => update,
       exit => exit
         .call(exit => exit.transition()
-          .duration(100)
+          .duration(DURATION - 50)
           .ease(d3.easeLinear)
           .attr('r', 1)
           .remove()
@@ -81,7 +78,7 @@ let render = (data) => {
         update => update,
         exit => exit
           .call(exit => exit.transition()
-            .duration(100)
+            .duration(DURATION - 50)
             .ease(d3.easeLinear)
             .remove()
           )

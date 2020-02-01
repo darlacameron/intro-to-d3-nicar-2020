@@ -139,25 +139,50 @@ One downside of `.join()` is that calling transitions inside it is a bit cumbers
 
 Now the exiting `<rect>` will have a customized exit transition instead of suddenly disappearing.
 
+## Customizing transitions
+
+The most common things we want to customize about our transitions is the duration and the easing.
+
+Transitions have a [`.duration()` method][2] that takes as an argument an number of milliseconds. Since we have a bunch of transitions that we would like to sync up, lets define a variable to store that duration. You can declare this variable however you like, but since this is a variable we don’t want to change, we can use `const` to declare it. An uppercase variable name is a longstanding programming convention for const variables.
+
+`const DURATION = 1000`
+
+Transitions also have an [`.ease()` method][3] that takes an easing function. These easing functions are documented in [the `d3-ease` module][4]. Transitions default to `d3.easeCubic`. Another useful easing function is `d3.easeLinear` for motion at a constant rate. A particularly fun one is `d3.easeElasticOut` – it make your transition feel bouncy. 
+
+Let’s try some now, modifying the bars `.transition()` after your `.join()`.
+
+	.transition()
+	.duration(DURATION)
+	.ease(d3.easeElasticOut)
+
+Try some different durations and easing functions and see what you like best.
+
+One other thing you can do is delay the transition with `.delay()`. This can create a shuffling effect when we pass a function in like the following:
+
+	.transition()
+	.duration(DURATION)
+	.ease(d3.easePolyOut)
+	.delay((d, i) => i * 10)
+
+Just like with PowerPoint, it is possible to overdo the transitions. Have fun for now in this workshop, but keep in mind that excessive transitions can distract from the point you are trying to make with your chart. A well-done transition helps the reader maintain continuity between the steps in your chart, but isn’t the main attraction.
+
 #### Exercise
 
 Update the label code to use the same `.join()` pattern as the `<rect>`s. Add transitions to the labels so they sync up with the `<rects>`.
 
 ## Animation
 
-You may be asking, “what’s with this `<button>` nonsense?” After all, the first law of news graphic interaction design is “Nobody clicks buttons.” ([The second law being “Nobody sees your tooltips”][2]).
+You may be asking, “what’s with this `<button>` nonsense?” After all, the first law of news graphic interaction design is “Nobody clicks buttons.” ([The second law being “Nobody sees your tooltips”][5]).
 
 The upshot of this is not that we don’t do anything interactive anymore, but rather that the interactions we design should be genuinely enriching to the reader’s experience. And if we do have something we want to show the reader, we should just show it to them rather than waiting on them to interact.
 
-So instead of making the reader click a button, lets just have the graphic automatically advance. To do this, we can use [`d3-timer`][3]. 
+So instead of making the reader click a button, lets just have the graphic automatically advance. To do this, we can use [`d3-timer`][6]. 
 
 	d3.interval(() => {
 	      render(dataYears[++year])
 	      // loop back to 1970 after 2015
 	      if (year === 2015) year = 1970;
-	    }, 1000)
-
-Timing and Easing.
+	    }, DURATION)
 
 #### Exercise
 
@@ -189,11 +214,14 @@ Now it looks good when you first load the page, but what happens if the screen s
 	  axisLabel.attr('transform', `translate(${width / 2}, -30)`)
 	}
 
-And attach it to the [`window.onresize` event][4] so that it gets called when the window size changes:
+And attach it to the [`window.onresize` event][7] so that it gets called when the window size changes:
 
 `window.onresize = updateSize`
 
 [1]:	https://github.com/d3/d3-transition
-[2]:	https://github.com/archietse/malofiej-2016/blob/master/tse-malofiej-2016-slides.pdf
-[3]:	https://github.com/d3/d3-timer
-[4]:	https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onresize
+[2]:	https://github.com/d3/d3-transition#transition_duration
+[3]:	https://github.com/d3/d3-transition#transition_ease
+[4]:	https://github.com/d3/d3-ease
+[5]:	https://github.com/archietse/malofiej-2016/blob/master/tse-malofiej-2016-slides.pdf
+[6]:	https://github.com/d3/d3-timer
+[7]:	https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onresize

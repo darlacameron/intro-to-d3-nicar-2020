@@ -6,3 +6,15 @@ html, body {
   max-width: 980px;
   margin: 0 auto;
 }
+
+.axis path {
+	display: none;
+}
+
+.axis text {
+	font-size: 14px;
+}
+
+.axis line {
+	stroke: #bbb;
+}
