@@ -51,5 +51,38 @@ Simple!
 
 ## Axes
 
-Now that we have room for axes, let’s draw some. D3 provides a handy generator to draw SVG axes.
+Now that we have room for axes, let’s draw some. D3 provides handy generators to draw SVG axes.
 
+[Link: documentation for d3-axis][1]
+
+The three generators we use most often are `d3.axisLeft()`, `d3.axisBottom()`, and `d3.axisTop()`. The position in the name refers to the orientation of the axis relative to the chart. In this case, lets use `d3.axisTop()`. The generator takes an argument which is the d3 scale we want to display on the axis.
+
+	let axis = d3.axisTop(scaleX)
+
+Let’s draw our axis inside a `<g>`. We will give this `<g>` a class “axis,” nudge it up a smidgen, and finally invoke the axis generator on our selection with `.call()`.
+
+	let axisG = svg.append('g')
+		.attr('class', 'axis')
+	    .attr('transform', 'translate(0, -5)')
+	    .call(axis)
+
+If you want to learn more about how `selection.call()` behaves, [check out the documentation][2].
+
+The axis is now on the page! But if might be cut off a bit if our `margin.top` isn’t big enough. Try increasing it until the entire axis is visible.
+
+## Labels
+
+To finish our axis, we need to add text describing what it is showing. We can do this with the SVG `<text>` element. To write text, use the `.text()` function. In our transform, the margin convention pays off again: centering is as easy as an x offset of `width / 2`. Another way to nudge your `<text>` position is with the `dx` and `dy` attributes. The [`text-anchor` attribute][3] is SVG’s way of specifying text alignment. The possible values are `start` (left-aligned, the default), `middle` (centered) and `end` (right-aligned).
+
+	svg.append('text')
+	    .text('Health spending per person')
+	    .attr('transform', `translate(${width / 2},0)`)
+		.attr('dy', -30)
+	    .attr('text-anchor', 'middle')
+
+#### Exercise
+Using a data join, label each bar with the name of its country. Hint: follow the code you wrote to draw the bars as an example.
+
+[1]:	https://github.com/d3/d3-axis
+[2]:	https://github.com/d3/d3-selection#selection_call
+[3]:	https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor
