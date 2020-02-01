@@ -50,12 +50,13 @@ Now, if you want something to happen only on the update phase, we can make that 
 
 	.join(
 	      enter => enter.append('rect')
-	        .attr('fill', 'salmon'),
-	      update => update.attr('fill', 'papayawhip'),
+	        .attr('fill', 'teal'),
+	      update => update.attr('fill', 'silver'),
 	      exit => exit.remove()
 	)
 
-What happens when we click the button now? Notice how Denmark appears on the chart. Since this is a new `<rect>` we would expect it to be salmon-colored. But instead all the rects are papayawhip, as if they were all already there before. 
+What happens when we click the button now? Notice how Denmark appears on the chart. Since this is a new `<rect>` we would expect it to be salmon-colored. But instead all the rects are papayawhip, as if they were all already there before.
+
 
 The issue is that D3 isn’t smart enough to know that we have a new country in our chart. We have to tell D3 that we care about tracking the countries in our join. To do this, we can pass an accessor function to `.data()`:
 
@@ -71,8 +72,9 @@ Note that those other `.attr()` calls after `.join()` can stay right where they 
 	    .join(
 	      enter => enter.append('rect')
 	        .attr('height', scaleY.bandwidth())
-	        .attr('x', 0),
-	      update => update,
+	        .attr('x', 0)
+			.attr('fill', 'teal'),
+	      update => update.attr('fill', 'silver'),
 	      exit => exit.remove()
 	    )
 	    .attr('width', d => scaleX(+d.healthExpPerCapita))
@@ -99,20 +101,25 @@ Let’s add a transition right after your `.join()` call
 	    .attr('width', d => scaleX(+d.healthExpPerCapita))
 	    .attr('y', (d, i) => scaleY(i))
 
-It involves some duplicated code, but I find this a bit less distracting:
+We can take advantage of `.join()` to create a customized “enter” transition:
 
 	  let bars = svg.selectAll('rect')
 	    .data(data, d => d.name)
 	    .join(
 	      enter => enter.append('rect')
 	        .attr('height', scaleY.bandwidth())
+			.attr('width', d => scaleX(+d.healthExpPerCapita))
 	        .attr('x', 0)
-	        .attr('width', d => scaleX(+d.healthExpPerCapita))
-	        .attr('y', (d, i) => scaleY(i)),
+	        .attr('y', (d, i) => scaleY(i))
+			.attr('transform', 'translate(-50, 0)')
+	        .attr('opacity', 0)
+			.attr('fill', 'teal'),
 	      update => update,
 	      exit => exit.remove()
 	    )
 	    .transition()
+		.attr('transform', 'translate(0, 0)')
+	    .attr('opacity', 1)
 	    .attr('width', d => scaleX(+d.healthExpPerCapita))
 	    .attr('y', (d, i) => scaleY(i))
 
@@ -125,10 +132,12 @@ Updating the axis is similar:
 One downside of `.join()` is that calling transitions inside it is a bit cumbersome. It looks like this:
 
 	exit => exit.call(exit => exit.transition()
+	        .attr('transform', 'translate(-50, 0)')
+	        .attr('fill', 'salmon')
 	        .style('opacity', 0)
-	        .remove())
+			.remove())
 
-Now the exiting `<rect>` will gracefully fade out instead of suddenly disappearing.
+Now the exiting `<rect>` will have a customized exit transition instead of suddenly disappearing.
 
 #### Exercise
 
@@ -150,14 +159,41 @@ So instead of making the reader click a button, lets just have the graphic autom
 
 Timing and Easing.
 
-#### Excercise
+#### Exercise
 
-Implement a highly visible label that updates to show us what year we are looking at.
+Implement a prominent label that updates to show us what year we are looking at.
 
+## Making your chart responsive
 
+If it doesn’t work on mobile, it doesn’t work. We need to design charts that look good on any screen size. Fortunately, D3 makes it easy to adapt our charts to the space we have available.
 
+First of all, we need to figure out how much space we have. Calling `.node()` on a selection gives us access to the DOM element and `.clientWidth` tells us how wide it is.
 
+	let width = chartContainer.node().clientWidth - margin.right - margin.left
+
+Now our chart is as wide as our screen, which looks kind of ridiculous. Let’s limit the width and center it using CSS. In `style.css`:
+
+	#chart {
+	  max-width: 980px;
+	  margin: 0 auto;
+	}
+
+Let’s see what it looks like on a phone. In your developer tools click the second button from the top left to enable device toolbar mode. 
+
+Now it looks good when you first load the page, but what happens if the screen size changes? Let’s write a function to take care of this:
+
+	let updateSize = () => {
+	  width = chartContainer.node().clientWidth - margin.right - margin.left
+	  svg.attr('width', width + margin.right + margin.left)
+	  scaleX.range([0, width])
+	  axisLabel.attr('transform', `translate(${width / 2}, -30)`)
+	}
+
+And attach it to the [`window.onresize` event][4] so that it gets called when the window size changes:
+
+`window.onresize = updateSize`
 
 [1]:	https://github.com/d3/d3-transition
 [2]:	https://github.com/archietse/malofiej-2016/blob/master/tse-malofiej-2016-slides.pdf
 [3]:	https://github.com/d3/d3-timer
+[4]:	https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onresize
