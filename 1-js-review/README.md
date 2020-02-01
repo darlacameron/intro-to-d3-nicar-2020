@@ -98,26 +98,25 @@ SVG stands for **scalable vector graphic** and it's an XML format that we often 
 </svg>
 ```
 - SVGs are two dimensional, and we can use them to chart  on an X and Y plane. Here, `cx` is the x location of the circle, `cy` is the x location and `r` is the radius. 
-- SVGs uses style attributes that are similar to HTML and CSS but just different enough to be annoying sometimes. Note the use of `stroke-width` instead of `border`!
+- SVGs uses style attributes that are similar to HTML and CSS but just different enough to be annoying sometimes. Note the use of `stroke-width` instead of `border`! SVGs also take style attributes, so they can be styled with CSS via classes and IDs. Here's documentation on possible [SVG style attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute) in case you want to learn more.
 
 #### Exercise
-- Your first exercise is writing code to draw SVGs by hand. You'll write that code directly in the `index.html` file in this folder.
-- Take a couple minutes with your partner to look at this tutorial on [paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
-- Then, in the index.html file of this folder, draw at least two different path shapes in an SVG.
-- Here's documentation on possible [SVG style attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute) in case you want to learn more.
+- Your first exercise is writing code to draw SVGs by hand. You'll write your SVG code directly in the `index.html` file in this folder.
+- First, take a couple minutes with your partner to look at this tutorial on [paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
+- Then, in the index.html file of this folder, draw at least two different path shapes in an SVG. You can draw any shape you'd like — try this [conference hotel building](https://www.marriott.com/hotels/travel/msyla-new-orleans-marriott/) or a snowman! 
 
 Once you're done drawing your shapes, here's a couple examples to add to your code. Two rectangles:
 ```html
-	<rect x="150" y="0" width="100" height="130" style="fill:black;"/>
-    <rect x="130" y="130" width="140" height="10" style="fill:black;"/>
+<rect x="150" y="0" width="100" height="130" style="fill:black;"/>
+<rect x="130" y="130" width="140" height="10" style="fill:black;"/>
 ```
 
 And a triangle. (Check out the file in `final/index.html` to see these shapes in context!)
 ```html 
-    <path d="M 200,230 L
-              230,240 L
-              200,250 z" 
-        style="fill:orange;" />
+<path d="M 200,230 L
+      230,240 L
+      200,250 z" 
+	style="fill:orange;" />
 ```
 
 #### Pro tip:
