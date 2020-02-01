@@ -6,8 +6,6 @@ But first, let’s use d3 to load some real data into the browser. The functions
 
 [Link: documentation for `d3-fetch`][1]
 
-TODO: Darla proposes giving them the starter index and script files here, maybe even with a function sculptData() to get started with. I forsee trouble with var scoping if they don't know where to put each line of the teaching code.
-
 Let’s get started by navigating to `localhost:8080/3-sculpting-data/` in your browser and loading the `3-sculpting-data/script.js` in your text editor.
 
 The data we are trying to load is CSV-formatted. It's located in the `data` folder for the class. To load and parse it into useful data, we can use [`d3.csv()`][2].
@@ -19,7 +17,7 @@ The data we are trying to load is CSV-formatted. It's located in the `data` fold
 
 `d3.csv()` returns a Promise which loads and parses our data. The function we pass to `.then()` will be called when our data is ready to use. 
 
-Now we have data. Let’s examine the structure of one entry in the array, noting the variable names and what type they are.
+Now we have data. Use the console to examine the structure of one entry in the array, noting the variable names and what type they are.
 
 We are about to write some code to process our data. This only has to happen once and can be decoupled from our chart code, so lets write a function to do this:
 
@@ -33,7 +31,7 @@ Call this function when our CSV promise returns:
 	d3.csv('../data/oecd.csv')
 		.then(sculptData)
 
-Inside this function, lets use `.map()` to transform the type of one of those variables
+Inside the `sculptData` function, lets use `.map()` to transform the type of one of those variables
 
 	data = raw.map(d => {
 		d.healthExpPerCapita = +d.healthExpPerCapita
@@ -45,9 +43,9 @@ and `.filter()` to limit the data to just one country
 	australia = data.filter(d => d.name === 'Australia')
 
 and `.sort()` to re-order the data
-
-TODO this sort should be on australia instead of data, right?
-	sortedByYear = data.sort((a, b) => a.year - b.year)
+	
+	sortedByYear = australia.sort((a, b) => a.year - b.year)
+	console.log(sortedByYear)
 
 On top of built-in JavaScript array methods, D3 provides some useful methods of its own in [d3-array][3].
 
@@ -72,13 +70,12 @@ Let’s nest our data by year:
 	  .map(data)
 
 ---- 
-#### Nerd note
-
-Mike Bostock has indicated that `d3.nest()` is deprecated. In d3 version 6.0, there will be a new `d3-array` method [`d3.group()`][6]. To be honest, `d3.group()` looks a bit more straightforward than `d3.nest()` but some of us grew up with and will always be nostalgic for `d3.nest()`. You won’t have to switch over to 6.0 as soon as it comes out, but it is good to know that this is on the horizon.
+#### Pro tip:
+> Mike Bostock has indicated that `d3.nest()` is deprecated. In d3 version 6.0, there will be a new `d3-array` method [`d3.group()`][6]. To be honest, `d3.group()` looks a bit more straightforward than `d3.nest()` but some of us grew up with and will always be nostalgic for `d3.nest()`. You won’t have to switch over to 6.0 as soon as it comes out, but it is good to know that this is on the horizon.
 ---- 
 
 ## Scales
-In order to make a chart, we need to do one more kind of data transformation. We need to translate values from our data range into the pixel space available in the SVG. The [`d3-scale` module][7] provides methods for doing this. There are a ton of scales provided, but we’ll focus on just a few today.
+Now that our data is in shape, we can get rady to make a chart. But first, we need to do one more kind of data transformation. We need to translate values from our data range into the pixel space available in the SVG. The [`d3-scale` module][7] provides methods for doing this. There are a ton of scales provided, but we’ll focus on just a few today.
 
 Let’s try `.scaleLinear()` to make an x axis scale for our chart:
 
