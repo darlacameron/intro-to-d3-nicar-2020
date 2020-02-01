@@ -41,16 +41,16 @@ Now we have a stored a Selection representing an `<svg>` in a variable. Let's mo
 You can pass anything you want to the `.append()` and `.attr()` functions. Try it!
 
 	svg.append('notarealtag')
-		.attr('madeupattr', 'lol’)
+		.attr('madeupattr', 'lol')
 
 Check out the Element tab in your devtools to see what happened.
 
-That’s enough of the console for now. Let’s write some code in the repo. Create a new file called `script.js` and write the following:
+That’s enough of the console for now. Let’s write some code in the repo. Create a new file called `script.js` in this folder and write the following:
 
-let svg = d3.select('body')
-  .append('svg')
-  .attr('width', 500)
-  .attr('height', 300)
+	let svg = d3.select('body')
+	  .append('svg')
+	  .attr('width', 500)
+	  .attr('height', 300)
 
 A neat thing that streamlines our D3 code is that both `.append()` and `.attr()` return a Selection, so we can call the next function directly on the Selection the previous function returned in a daisy-chained fashion. To get this code running, add the following line to `index.html` in the `<body>` right after the script tag with d3:
 
@@ -59,7 +59,7 @@ A neat thing that streamlines our D3 code is that both `.append()` and `.attr()`
 Refresh your browser and look in the Elements tab of the devtools to check if the `<svg>` is there. Note that the script tag with your code needs to go after the d3 tag because it is expecting that d3 is already loaded on the page.
 
 #### Exercise
-Using the `.append()` and `.attr()` functions, recreate the SVG you wrote by hand in the previous step, but this time entirely in JavaScript. Write this code in `script.js`.
+Using the `.append()` and `.attr()` functions, recreate the SVG you wrote by hand in exercise 1, but this time entirely in JavaScript. Write this code in `script.js`.
 ---- 
 When you were writing code to draw the circles, did it feel like you were repeating yourself? It’s a good instinct to have when you are coding — perhaps the code you just wrote could be streamlined by writing parts of it in a for loop. We could do that, but d3 has a better way. It involves attaching data to your selection.
 
@@ -70,8 +70,6 @@ Let’s write an array containing data specifying the size and location of the s
 	  {'r': 40, 'cx': 150, 'cy': 150},
 	  {'r': 30, 'cx': 150, 'cy': 90}
 	]
-
-TODO: do we start a fresh file here?
 
 Now we will attach this data to a selection using `.selectAll()` which is a version of `.select()` that works with multiple elements. In `script.js` write the following:
 
@@ -88,6 +86,8 @@ Now `circleSelectionWithData` is a special kind of Selection with some extra fun
 This gives a special selection, one that represents only nodes that are “entering” the DOM, that is, elements representing entries in the array passed to `.data()` that don’t already exist in the DOM. Since there weren’t any circles in the DOM already, that means we have a node for every element in `snowData`. Now let’s draw some circles with the familiar `.append()` function.
 
 	let circles = circleEnterSelection.append('circle')
+	// now we call the function to trigger it
+	circles
 
 Nothing will show up yet, but if you look in your inspector, you should see some `<circle>`s inside your `<svg>`.
 
