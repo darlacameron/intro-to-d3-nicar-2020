@@ -1,11 +1,7 @@
 // Margin convention
-let margin = {top: 30, right: 10, left: 200, bottom: 10}
+let margin = {top: 50, right: 10, left: 200, bottom: 10}
 let width = 700 - margin.right - margin.left
 let height = 500 - margin.top - margin.bottom
-
-// because we are hot loading:
-if (window.timer) window.timer.stop()
-d3.selectAll('svg').remove()
 
 let svg = d3.select('div#chart')
   .append('svg')
@@ -14,73 +10,67 @@ let svg = d3.select('div#chart')
   .append('g')
     .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-let scale = d3.scaleLinear()
-  .range([0, width])
-
-let heading = d3.select('h1')
-
 let axisG = svg.append('g')
   .attr('class', 'axis')
   .attr('transform', 'translate(0, -5)')
 
-let axis = d3.axisTop(scale)
+svg.append('text')
+  .text('Health spending per person')
+  .attr('transform', `translate(${width / 2}, -30)`)
+  .attr('text-anchor', 'middle')
 
 let render = (raw) => {
   let data = raw
     .sort((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
-    .slice(0, 15)
+    .slice(0, 10)
 
   let maxValue = d3.max(data, d => +d.healthExpPerCapita)
 
-  scale.domain([0, maxValue])
+  let scaleX = d3.scaleLinear()
+    .domain([0, maxValue])
+    .range([0, width])
 
-  axisG.transition().call(axis)
+  let scaleY = d3.scaleBand()
+    .domain(d3.range(0, 10))
+    .range([0, height])
+    .padding(0.05)
 
-  svg.selectAll('rect')
+  let axis = d3.axisTop(scaleX)
+
+  axisG
+    .transition()
+    .call(axis)
+
+  let bars = svg.selectAll('rect')
     .data(data, d => d.name)
     .join(
       enter => enter.append('rect')
-        .attr('height', 0)
-        .style('fill', '#000')
-        .style('opacity', 0)
-        .attr('width', d => scale(+d.healthExpPerCapita))
-        .attr('transform', (d, i) => `translate(0, ${i * 25})`)
-        ,
+        .attr('height', scaleY.bandwidth())
+        .attr('x', 0)
+        .attr('width', d => scaleX(+d.healthExpPerCapita))
+        .attr('y', (d, i) => scaleY(i)),
       update => update,
-      exit => exit
-        .call(exit => exit.transition()
-          .style('opacity', 0)
-          .remove())
+      exit => exit.call(exit => exit.transition()
+        .style('opacity', 0)
+        .remove())
     )
     .transition()
-      .style('opacity', 1)
-      .attr('width', d => scale(+d.healthExpPerCapita))
-      .attr('height', 20)
-      .attr('transform', (d, i) => `translate(0, ${i * 25})`)
+    .attr('width', d => scaleX(+d.healthExpPerCapita))
+    .attr('y', (d, i) => scaleY(i))
 
-  svg.selectAll('text.country-label')
-    .data(data, d => d.name)
-    .join(
-      enter => enter.append('text')
-        .attr('class', 'country-label')
-        .attr('dx', -3)
-        .attr('dy', 16)
-        .style('opacity', 0)
-        .attr('y', (d, i) => i * 25)
-        .style('text-anchor', 'end')
-        .text(d => d.name),
-      update => update,
-      exit => exit
-        .call(exit => exit.transition()
-          .style('opacity', 0)
-          .remove())
-    )
-    .transition()
-    .style('opacity', 1)
-    .attr('y', (d, i) => i * 25)
+
+  let text = svg.selectAll('text.country-label')
+    .data(data)
+    .join('text')
+    .attr('class', 'country-label')
+    .attr('y', (d, i) => scaleY(i))
+    .attr('dx', -3)
+    .attr('dy', scaleY.bandwidth() / 2 + 5)
+    .style('text-anchor', 'end')
+    .text(d => d.name)
 }
 
-d3.csv('../../data/oecd.csv').then(raw => {
+function sculptData(raw) {
   let data = raw.map(d => {
     d.healthExpPerCapita = +d.healthExpPerCapita
     d.year = +d.year
@@ -88,19 +78,69 @@ d3.csv('../../data/oecd.csv').then(raw => {
   })
 
   let dataYears = d3.nest()
-    .key(function(d) { return d.year })
-    .map(data)
+    .key(d => d.year)
+    .object(data)
 
   let dataCountries = d3.nest()
-    .key(function(d) { return d.name })
+    .key(d => d.name)
     .entries(data)
 
-  let year = 1970
+  return dataYears;
+}
 
-  window.timer = d3.interval(() => {
-    heading.text(year)
-    render(dataYears['$' + year])
-    year += 1
-    if (year > 2015) year = 1970
-  }, 1000)
-})
+d3.csv('../../data/oecd.csv')
+  .then(sculptData)
+  .then(dataYears => {
+    let year = 1970;
+    console.log(dataYears);
+    d3.select('button').on('click', () => {
+      render(dataYears[++year])
+      // loop back to 1970 after 2015
+      if (year === 2015) year = 1970;
+    })
+    render(dataYears[year])
+  })
+
+
+/* /*svg.selectAll('rect')
+  .data(data, d => d.name)
+  .join(
+    enter => enter.append('rect')
+      .attr('height', 0)
+      .style('fill', '#000')
+      .style('opacity', 0)
+      .attr('width', d => scale(+d.healthExpPerCapita))
+      .attr('transform', (d, i) => `translate(0, ${i * 25})`)
+      ,
+    update => update,
+    exit => exit
+      .call(exit => exit.transition()
+        .style('opacity', 0)
+        .remove())
+  )
+  .transition()
+    .style('opacity', 1)
+    .attr('width', d => scale(+d.healthExpPerCapita))
+    .attr('height', 20)
+    .attr('transform', (d, i) => `translate(0, ${i * 25})`)
+
+svg.selectAll('text.country-label')
+  .data(data, d => d.name)
+  .join(
+    enter => enter.append('text')
+      .attr('class', 'country-label')
+      .attr('dx', -3)
+      .attr('dy', 16)
+      .style('opacity', 0)
+      .attr('y', (d, i) => i * 25)
+      .style('text-anchor', 'end')
+      .text(d => d.name),
+    update => update,
+    exit => exit
+      .call(exit => exit.transition()
+        .style('opacity', 0)
+        .remove())
+  )
+  .transition()
+  .style('opacity', 1)
+  .attr('y', (d, i) => i * 25) */

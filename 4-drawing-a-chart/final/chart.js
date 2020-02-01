@@ -10,6 +10,11 @@ let svg = d3.select('div#chart')
   .append('g')
     .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
+svg.append('text')
+  .text('Health spending per person')
+  .attr('transform', `translate(${width / 2}, -30)`)
+  .attr('text-anchor', 'middle')
+
 let render = (raw) => {
   let data = raw
     .sort((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
@@ -32,11 +37,6 @@ let render = (raw) => {
     .attr('class', 'axis')
     .attr('transform', 'translate(0, -5)')
     .call(axis)
-
-  svg.append('text')
-    .text('Health spending per person')
-    .attr('transform', `translate(${width / 2}, -30)`)
-    .attr('text-anchor', 'middle')
 
   let bars = svg.selectAll('rect')
     .data(data)
@@ -66,11 +66,11 @@ function sculptData(raw) {
   })
 
   let dataYears = d3.nest()
-    .key(function(d) { return d.year })
+    .key(d => d.year)
     .map(data)
 
   let dataCountries = d3.nest()
-    .key(function(d) { return d.name })
+    .key(d => d.name)
     .entries(data)
 
   return dataYears['$1970']
