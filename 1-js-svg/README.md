@@ -120,8 +120,10 @@ And a triangle. (Check out the file in `final/index.html` to see these shapes in
 	style="fill:orange;" />
 ```
 
+---- 
 #### Pro tip:
 > Adobe Illustrator reads SVGs, and the New York Times graphics team made a great Chrome plugin called [SVG Crowbar](https://nytimes.github.io/svg-crowbar/) that makes it easy to export an SVG from a webpage and open it in Illustrator. A workflow that we like is drawing a crazy shape in D3, Crowbar'ing it out of the browser, editing in Illustrator and publishing with [ai2html](http://ai2html.org/), another free tool from NYT graphics. Here's [an example](https://www.washingtonpost.com/graphics/politics/kushner-conflicts/?utm_term=.8bbce7210bc5) from Darla's days at the Post. 
+---- 
 
 ### Next, we'll start using D3!
 
