@@ -70,7 +70,7 @@ Let’s nest our data by year:
 	  .map(data)
 
 ---- 
-#### Pro tip:
+#### Nerd note:
 > Mike Bostock has indicated that `d3.nest()` is deprecated. In d3 version 6.0, there will be a new `d3-array` method [`d3.group()`][6]. To be honest, `d3.group()` looks a bit more straightforward than `d3.nest()` but some of us grew up with and will always be nostalgic for `d3.nest()`. You won’t have to switch over to 6.0 as soon as it comes out, but it is good to know that this is on the horizon.
 ---- 
 

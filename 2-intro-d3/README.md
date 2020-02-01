@@ -12,8 +12,10 @@ To include d3.js, write the following line inside the `<body>` tag.
 
 The `../` tells the browser to look one directory up, because that’s where we’ve included the d3 files relative to `index.html` in this particular project.
 
-#### Pro Tip: 
+---- 
+#### Pro tip: 
 > d3.js weighs in at 511kb, which is pretty hefty for a JavaScript library. Fortunately, the minified version `d3.min.js` is half the size. And if you are using a build system like Webpack, you may be able to cut the size down even further by only including the modules you actually use.
+---- 
 
 The d3-selection module is included in d3 by default. So if d3 is loaded properly we are ready to go. You check by opening the console and typing
 
