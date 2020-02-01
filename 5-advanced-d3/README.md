@@ -148,6 +148,12 @@ So instead of making the reader click a button, lets just have the graphic autom
 	      if (year === 2015) year = 1970;
 	    }, 1000)
 
+Timing and Easing.
+
+#### Excercise
+
+Implement a highly visible label that updates to show us what year we are looking at.
+
 
 
 
