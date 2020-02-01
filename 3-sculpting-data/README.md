@@ -6,9 +6,11 @@ But first, let’s use d3 to load some real data into the browser. The functions
 
 [Link: documentation for `d3-fetch`][1]
 
-TODO: do we start a new file here?
+TODO: Darla proposes giving them the starter index and script files here, maybe even with a function sculptData() to get started with. I forsee trouble with var scoping if they don't know where to put each line of the teaching code.
 
-The data we are trying to load is CSV-formatted. To load and parse it into useful data, we can use [`d3.csv()`][2].
+Let’s get started by navigating to `localhost:8080/3-sculpting-data/` in your browser and loading the `3-sculpting-data/script.js` in your text editor.
+
+The data we are trying to load is CSV-formatted. It's located in the `data` folder for the class. To load and parse it into useful data, we can use [`d3.csv()`][2].
 
 	d3.csv('../data/oecd.csv')
 		.then(data => {
@@ -19,6 +21,9 @@ The data we are trying to load is CSV-formatted. To load and parse it into usefu
 
 Now we have data. Let’s examine the structure of one entry in the array, noting the variable names and what type they are.
 
+
+TODO this next step throws an error for darla- data isn't defined, and it's not clear where to put the map. should it go inside the "then"? same with australia.
+
 Let’s use `.map()` to transform the type of one of those variables
 
 	data = data.map(d => {
@@ -28,10 +33,11 @@ Let’s use `.map()` to transform the type of one of those variables
 
 and `.filter()` to limit the data to just one country
 
-	australia = data.filter(d => d.name === Australia)
+	australia = data.filter(d => d.name === 'Australia')
 
 and `.sort()` to re-order the data
 
+TODO this sort should be on australia instead of data, right?
 	sortedByYear = data.sort((a, b) => a.year - b.year)
 
 On top of built-in JavaScript array methods, D3 provides some useful methods of its own in [d3-array][3].
