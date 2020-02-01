@@ -138,48 +138,4 @@ d3.csv('../../data/oecd.csv')
     d3.interval(renderNextYear, 1000);
   })
 
-
-/* /*svg.selectAll('rect')
-  .data(data, d => d.name)
-  .join(
-    enter => enter.append('rect')
-      .attr('height', 0)
-      .style('fill', '#000')
-      .style('opacity', 0)
-      .attr('width', d => scale(+d.healthExpPerCapita))
-      .attr('transform', (d, i) => `translate(0, ${i * 25})`)
-      ,
-    update => update,
-    exit => exit
-      .call(exit => exit.transition()
-        .style('opacity', 0)
-        .remove())
-  )
-  .transition()
-    .style('opacity', 1)
-    .attr('width', d => scale(+d.healthExpPerCapita))
-    .attr('height', 20)
-    .attr('transform', (d, i) => `translate(0, ${i * 25})`)
-
-svg.selectAll('text.country-label')
-  .data(data, d => d.name)
-  .join(
-    enter => enter.append('text')
-      .attr('class', 'country-label')
-      .attr('dx', -3)
-      .attr('dy', 16)
-      .style('opacity', 0)
-      .attr('y', (d, i) => i * 25)
-      .style('text-anchor', 'end')
-      .text(d => d.name),
-    update => update,
-    exit => exit
-      .call(exit => exit.transition()
-        .style('opacity', 0)
-        .remove())
-  )
-  .transition()
-  .style('opacity', 1)
-  .attr('y', (d, i) => i * 25) */
-
 window.onresize = updateSize
