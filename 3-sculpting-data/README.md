@@ -21,12 +21,21 @@ The data we are trying to load is CSV-formatted. It's located in the `data` fold
 
 Now we have data. Let’s examine the structure of one entry in the array, noting the variable names and what type they are.
 
+We are about to write some code to process our data. This only has to happen once and can be decoupled from our chart code, so lets write a function to do this:
 
-TODO this next step throws an error for darla- data isn't defined, and it's not clear where to put the map. should it go inside the "then"? same with australia.
+	let sculptData = (raw) => {
+		/* write data processing code in here */
+		console.log('sculpt this data:', raw)
+	}
 
-Let’s use `.map()` to transform the type of one of those variables
+Call this function when our CSV promise returns:
 
-	data = data.map(d => {
+	d3.csv('../data/oecd.csv')
+		.then(sculptData)
+
+Inside this function, lets use `.map()` to transform the type of one of those variables
+
+	data = raw.map(d => {
 		d.healthExpPerCapita = +d.healthExpPerCapita
 		return d
 	})
