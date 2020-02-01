@@ -132,7 +132,8 @@ Now the exiting `<rect>` will gracefully fade out instead of suddenly disappeari
 
 #### Exercise
 
-Add transitions to the labels so they sync up with the \<rects\>.
+Update the label code to use the same `.join()` pattern as the `<rect>`s. Add transitions to the labels so they sync up with the `<rects>`.
+
 ---- 
 
 
