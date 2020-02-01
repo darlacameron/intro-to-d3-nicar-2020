@@ -134,9 +134,24 @@ Now the exiting `<rect>` will gracefully fade out instead of suddenly disappeari
 
 Update the label code to use the same `.join()` pattern as the `<rect>`s. Add transitions to the labels so they sync up with the `<rects>`.
 
----- 
+## Animation
+
+You may be asking, “what’s with this `<button>` nonsense?” After all, the first law of news graphic interaction design is “Nobody clicks buttons.” ([The second law being “Nobody sees your tooltips”][2]).
+
+The upshot of this is not that we don’t do anything interactive anymore, but rather that the interactions we design should be genuinely enriching to the reader’s experience. And if we do have something we want to show the reader, we should just show it to them rather than waiting on them to interact.
+
+So instead of making the reader click a button, lets just have the graphic automatically advance. To do this, we can use [`d3-timer`][3]. 
+
+	d3.interval(() => {
+	      render(dataYears[++year])
+	      // loop back to 1970 after 2015
+	      if (year === 2015) year = 1970;
+	    }, 1000)
+
 
 
 
 
 [1]:	https://github.com/d3/d3-transition
+[2]:	https://github.com/archietse/malofiej-2016/blob/master/tse-malofiej-2016-slides.pdf
+[3]:	https://github.com/d3/d3-timer

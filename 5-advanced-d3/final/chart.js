@@ -93,11 +93,11 @@ d3.csv('../../data/oecd.csv')
   .then(dataYears => {
     let year = 1970;
     console.log(dataYears);
-    d3.select('button').on('click', () => {
+    d3.interval(() => {
       render(dataYears[++year])
       // loop back to 1970 after 2015
       if (year === 2015) year = 1970;
-    })
+    }, 1000)
     render(dataYears[year])
   })
 
