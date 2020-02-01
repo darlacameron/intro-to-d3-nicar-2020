@@ -1,11 +1,7 @@
 // Margin convention
-let margin = {top: 30, right: 10, left: 200, bottom: 10}
+let margin = {top: 50, right: 10, left: 200, bottom: 10}
 let width = 700 - margin.right - margin.left
 let height = 500 - margin.top - margin.bottom
-
-// because we are hot loading:
-if (window.timer) window.timer.stop()
-d3.selectAll('svg').remove()
 
 let svg = d3.select('div#chart')
   .append('svg')
@@ -14,49 +10,55 @@ let svg = d3.select('div#chart')
   .append('g')
     .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-let scale = d3.scaleLinear()
-  .range([0, width])
-
-let heading = d3.select('h1')
-
-let axisG = svg.append('g')
-  .attr('class', 'axis')
-  .attr('transform', 'translate(0, -5)')
-
-let axis = d3.axisTop(scale)
-
 let render = (raw) => {
   let data = raw
     .sort((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
-    .slice(0, 15)
+    .slice(0, 10)
 
   let maxValue = d3.max(data, d => +d.healthExpPerCapita)
 
-  scale.domain([0, maxValue])
+  let scaleX = d3.scaleLinear()
+    .domain([0, maxValue])
+    .range([0, width])
 
-  axisG.call(axis)
+  let scaleY = d3.scaleBand()
+    .domain(d3.range(0, 10))
+    .range([0, height])
+    .padding(0.05)
+
+  let axis = d3.axisTop(scaleX)
+
+  let axisG = svg.append('g')
+    .attr('class', 'axis')
+    .attr('transform', 'translate(0, -5)')
+    .call(axis)
+
+  svg.append('text')
+    .text('Health spending per person')
+    .attr('transform', `translate(${width / 2}, -30)`)
+    .attr('text-anchor', 'middle')
 
   let bars = svg.selectAll('rect')
     .data(data)
     .enter().append('rect')
-    .style('fill', '#000')
-    .attr('width', d => scale(+d.healthExpPerCapita))
-    .attr('height', 20)
-    .attr('transform', (d, i) => `translate(0, ${i * 25})`)
+    .attr('width', d => scaleX(+d.healthExpPerCapita))
+    .attr('height', scaleY.bandwidth())
+    .attr('y', (d, i) => scaleY(i))
+    .attr('x', 0)
 
   let text = svg.selectAll('text.country-label')
     .data(data)
     .enter().append('text')
     .attr('class', 'country-label')
-    .attr('y', (d, i) => i * 25)
+    .attr('y', (d, i) => scaleY(i))
     .attr('dx', -3)
-    .attr('dy', 16)
+    .attr('dy', scaleY.bandwidth() / 2 + 5)
     .style('text-anchor', 'end')
     .text(d => d.name)
-
 }
 
-d3.csv('../../data/oecd.csv').then(raw => {
+function sculptData(raw) {
+  console.log(raw);
   let data = raw.map(d => {
     d.healthExpPerCapita = +d.healthExpPerCapita
     d.year = +d.year
@@ -71,6 +73,9 @@ d3.csv('../../data/oecd.csv').then(raw => {
     .key(function(d) { return d.name })
     .entries(data)
 
-  let year = 1970
-  render(dataYears['$' + year])
-})
+  return dataYears['$1970']
+}
+
+d3.csv('../../data/oecd.csv')
+  .then(sculptData)
+  .then(render)

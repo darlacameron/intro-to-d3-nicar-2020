@@ -50,7 +50,6 @@ function render(raw) {
   let bars = svg.selectAll('rect')
     .data(data)
     .enter().append('rect')
-    .style('fill', '#000')
     .attr('width', d => scale(+d.healthExpPerCapita))
     .attr('height', scaleY.bandwidth())
     .attr('y', (d, i) => scaleY(i))
