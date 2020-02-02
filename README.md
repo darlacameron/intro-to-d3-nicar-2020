@@ -41,21 +41,48 @@ Instructors: [Darla Cameron](https://www.texastribune.org/about/staff/darla-came
 - In a browser, go to `http://localhost:8080/` to view the class files. 
 - We'll leave this server running all though class.
 
+
+
+----
+
 ## Next steps: How to put what you learned today into action
 Here's things that we have learned along the way that are worth considering as you start making graphics with d3.
 
-#### Some useful tutorials
-- [The 2019 version of this class](https://github.com/csessig86/intro-to-d3-nicar-19)
-- [A day-long D3 class that John taught](https://github.com/jmuyskens/big-data-ignite-d3-workshop)
-- [Free Code Camp](https://www.freecodecamp.org/learn/) 
-- [Learn JS Data](http://learnjsdata.com/index.html)
-- [Eloquent Javascript](https://eloquentjavascript.net/) 
+----
+### Graphic technology decision making process
+
+The first step when we take on a new project is deciding what technology to use. This process can vary a bit depending on your team size, project scope and deadline (Darla's team has just four people, but John's team has close to 30!). Here's a list of publication options from simple to complex to help you figure out what to develop.
+
+Any of the following may be the right choice for you depending on your CMS, development skills and what serves the story best. BUT they can all make use of D3!
+
+- Static image
+    - Upside: Works everywhere, even in print
+    - Downside: not accessible by default, text not right size on all screens
+    - D3 workflow: Dev environment -> [SVG crowbar](https://nytimes.github.io/svg-crowbar/) -> vector graphics program such as Adobe Illustrator
+- Responsive HTML with [ai2html](http://ai2html.org/)
+    - Upside: responsive, accessible, text can be sharp and consistently sized on all screens
+    - Downside: requires Adobe Illustrator (not cheap, has a learning curve), more work to design each artboard, may not be supported in your CMS
+    - D3 workflow: Dev environment -> [SVG crowbar](https://nytimes.github.io/svg-crowbar/) -> Adobe Illustrator -> [ai2html](http://ai2html.org/) -> back to dev environment or CMS to publish
+- Interactive D3 SVG
+    - Upside: dynamic, adaptive, interactive, sharp on any screen pixel density, can use joins to manage data updates, code can be re-usable
+    - Downside: long turnaround time, difficult development work to get it looking good on all screen sizes, must handle browser quirks, your CMS may not support this and figuring out where to put the code and getting it to play nice with the site can require engineering help, performance can be an issue with complex animations, annotations and design flourishes that are easy to perfect in Illustrator are hard to code in d3, multi-line text in SVG sucks (but text-anchor is pretty nice)
+    - D3 workflow: Dev environment -> Code publishing tool such as [Tribune's kit](https://github.com/texastribune/data-visuals-create)
+- Interactive [D3 canvas](https://bl.ocks.org/mbostock/1276463)
+    - Upside: Improved performance over SVG if you have thousands of elements, some D3 things carry over: scales, shapes. Can be layered with SVG effectively.
+    - Downside: Very different programming strategy and concepts from SVG requires leaning new concepts and switching gears. Raster graphics, so it is resolution-dependent and you can’t crowbar out a vector image (you can save a raster image, though).
+- WebGL
+    - Upside: Even better performance, 3D
+    - Downside: steep learning curve that doesn’t carry over from SVG and Canvas concepts and can involve a totally different programming language to write shaders. Few D3 things carry over, though you can still use scales.
+- Video
+    - Upside: Good performance regardless of the complexity of your visuals
+    - Downside: text in videos looks bad, can be large file sizes (though better than GIFs, and internet connections are pretty fast these days), complex/different workflow for producing and hosting
+    - TODO > ADD THIS D3 workflow [via Adam Pearce] 
 
 #### How to actually get d3 code on your website
 - Custom static pages outside your CMS
 	- Most complex, interactive graphics will not fit nicely into your news organization's CMS. At the Post and the Trib, we publish directly to Amazon s3 buckets as a workaround. Yes, it's a lot of work to make sure our code and tracking tags sync up with the main site, but it's worth it to have a sandbox where we can experiment.
 	- It's also very important to know that we never write code from scratch — every project that our teams produce starts with a build environment that has a server, file compression, links to Google docs, deploy tools and more built in automatically. 
-	- Both the Post and the Tribune work in kits that are written in Node.js, and the [Tribune's kit is open source](https://github.com/texastribune/data-visuals-create) and free for anyone to use. We highly encourage you to use something like this as a base for your work.
+	- Both the Post and the Tribune work in kits that are written in Node.js, and the [Tribune's kit](https://github.com/texastribune/data-visuals-create) is open source and free for anyone to use. We highly encourage you to use something like this as a base for your work.
 	- Both kits take advantage of [Archie Markup Language](http://archieml.org/), a wonderful open-source tool from the NYT's graphics team that renders google docs in graphics. 
 - Embeds
 	- Sometimes graphics do need to be embedded into the cms for context with a story — that's when iframes come in. The Trib's kit allows for the development of embedded graphics with help from a variation on iframes called [frames](https://github.com/rdmurphy/frames), which is responsive and works great with Google's AMP instant articles (this will make your product and engineering friends happy).
@@ -68,7 +95,7 @@ Here's things that we have learned along the way that are worth considering as y
 	- The basics of chart-making always apply — leave no axis unlabeled! But all of the text around a graphic matters a lot. Be a good journalist and cite your sources — or even link directly to them. Your future self will thank you when you're trying to track down this data again.
 - Annotate all the things
 	- As an alternative to tooltips, graphics editors LOVE a nice, clean swoopy arrow with text at the end providing helpful context. (Seriously.) It's very easy to swoop arrows all day long in Illustrator, but unfortunately it's a bit harder in d3. [Swoopy Drag](https://1wheel.github.io/swoopy-drag/) is the best option for adding a bit of elegant annotation.
-	- Those arrows have to point to something — a nice, three-line annotation, perhaps? Unfortunately, SVG `<text>` elements don't support text wrapping, so you'll have to use a function to wrap the text yourself. [This example](https://bl.ocks.org/mbostock/7555321) is fairly helpful. 
+	- Those arrows have to point to something, and it's usually text. Unfortunately, SVG `<text>` elements don't support multi-line text wrapping, so you'll have to use a function to wrap the text yourself. [This example](https://bl.ocks.org/mbostock/7555321) is fairly helpful. 
 		- Pro tip: you could also just put the text in an absolutely positioned `<p>` tag, which does support text wrapping, and use d3.scale to position it.
 - Make text more visible with casing
 	- Labels on top of a brightly colored map can be hard to read. Use CSS to add subtle white shadow or stroke around the text so text is legible.
@@ -81,10 +108,11 @@ Here's things that we have learned along the way that are worth considering as y
 	- Ryan Murphy to the rescue — this excellent library converts dates to AP style and more. It's automatically included in the Tribune's development environment, too!
 
 #### Browser testing pitfalls
-TODO- John can you add these?
+- As recently as five years ago, SVGs were not supported at all in Internet Explorer, and lots of Post readers used it on their computers at work (read: federal government). We swapped a lot of elaborate graphics out for non-responsive screen grabs.
+TODO- John can you add more?
 
 #### Beware of old d3 examples with previous APIs older than v4
-- d3 was first released in 2012, and it's now on version 5! For security reasons, we recommend using the latest and greatest version. The last few [changes](https://github.com/d3/d3/blob/master/CHANGES.md) have changed the code's structure in big ways, and examples before v4 will not work with the current versions. As you're googling around to solve a bug, keep an eye out for old examples and avoid them.
+- D3 was first released in 2012, and it's now on version 5! For security reasons, we recommend using the latest and greatest version. The last few [changes](https://github.com/d3/d3/blob/master/CHANGES.md) have changed the code's structure in big ways, and examples before v4 will not work with the current versions. As you're googling around to solve a bug, keep an eye out for old examples and avoid them.
 
 #### [Observable](https://observablehq.com/)
 - Mike Bostock is all in on his cool new tool for writing code. You'll see lots of newer d3 examples in this format.
@@ -97,42 +125,20 @@ TODO- John can you add these?
 - Ryan Murphy wrote a handy little [scroller](https://github.com/rdmurphy/scroller) library that we highly recommend if you want a lightweight implementation.
 
 #### Maps
-TODO all this
-- projections. what are they
-- extra projections in d3-geo-projection
-- packaging your data with mapshaper and topojson
+d3 is pretty great for mapping — most newsrooms use d3 + canvas for their election results maps, for instance. But, without a bit of background knowledge in cartography and GIS, there can be a steep learning curve.
+- [Intro to Mapping and GIS for Journalists](https://journalismcourses.org/mapping.html): Darla and her colleague Chris Essig taught an free MOOC in 2018 if you want to learn the basics of QGIS, a free and open source mapping program.
+- Projections are standardized ways that cartographers have developed to display the 3D earth on a 2D surface. D3 comes with a set of built-in [common projections](https://d3-wiki.readthedocs.io/zh_CN/master/Geo-Projections/), and that will cover most use cases.
+- For super custom maps, extra projections are available [d3-geo-projection](https://github.com/d3/d3-geo-projection/).
+- There are great tools for converting geographic data from shapefiles, a standard format read by GIS software and available from official sources, to [topojson](https://github.com/topojson/topojson), a slimmed-down extension of geojson. We use [mapshaper](https://mapshaper.org/) to optimize both file size and level of detail.
+
+- TODO: John, can you cover these two? 
 - aligning a raster basemap you made in QGIS
 - when to use canvas instead of SVG, and what is canvas?
 
-----
-### Graphic technology decision making process
-
-The first step when we take on a new project is deciding what technology to use. This process can vary a bit depending on your team size, project scope and deadline (Darla's team has just four people, but John's team has close to 30!). Here's a decision tree to help you figure out what to develop.
-
-Any of the following may be the right choice for you depending on your CMS, development skills and what serves the story best. BUT they can all make use of D3!
-
-- Static image
-    - Upside: Works everywhere, even in print
-    - Downside: not accessible by default, text not right size on all screens
-    - D3 workflow: Dev environment -> [SVG crowbar](https://nytimes.github.io/svg-crowbar/) -> vector graphics program such as Illustrator
-- Responsive HTML (ai2html)
-    - Upside: responsive, accessible, text can be sharp and consistently sized on all screens
-    - Downside: requires Adobe Illustrator (not cheap, has a learning curve), more work to design each artboard, may not be supported in your CMS
-    - D3 workflow: Dev environment -> SVG crowbar -> Adobe Illustrator -> ai2html
-- Interactive D3 SVG
-    - Upside: dynamic, adaptive, interactive, sharp on any screen pixel density, can use joins to manage data updates, code can be re-usable
-    - Downside: long turnaround time, difficult development work to get it looking good on all screen sizes, handle browser quirks, your CMS may not support this and figuring out where to put the code and getting it to play nice with the site can require engineering help, performance can be an issue with complex animations, annotations and design flourishes that are easy to perfect in Illustrator are hard to code in d3, multi-line text in SVG sucks (but text-anchor is pretty nice)
-    - D3 workflow: Dev environment -> Code publishing tool*
-- Interactive D3 canvas
-    - Upside: Improved performance over SVG if you have 1000s of elements, some D3 things carry over: scales, shapes. can be layered with SVG effectively.
-    - Downside: very different programming strategy and concepts from SVG requires leaning new concepts and switching gears. Raster graphics, so it is resolution-dependent and you can’t crowbar out a vector image (you can save a raster image, though).
-- WebGL
-    - Upside: Even better performance, 3D
-    - Downside: steep learning curve that doesn’t carry over from SVG and Canvas concepts and can involve a totally different programming language to write shaders. Few D3 things carry over, though you can still use scales
-- Video
-    - Upside: Good performance regardless of the complexity of your visuals
-    - Downside: text in videos looks bad, can be large file sizes (though better than GIFs, and internet connections are pretty fast these days), complex/different workflow for producing and hosting
-    - D3 workflow [via Adam Pearce]
-
-
+#### Some useful tutorials
+- [The 2019 version of this class](https://github.com/csessig86/intro-to-d3-nicar-19)
+- [A day-long D3 class that John taught](https://github.com/jmuyskens/big-data-ignite-d3-workshop)
+- [Free Code Camp](https://www.freecodecamp.org/learn/) 
+- [Learn JS Data](http://learnjsdata.com/index.html)
+- [Eloquent Javascript](https://eloquentjavascript.net/) 
 
