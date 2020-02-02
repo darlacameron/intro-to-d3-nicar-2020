@@ -6,7 +6,7 @@ What we’ve done so far is cool, but it’s not a chart yet. Our visual is mean
 
 First of all, we need to a make some space for axes. You can do this in many ways, but there is one so common we refer to it here as the Margin Convention.
 
-![Diagram illustrating the margin convention](img/chart-convention.png)
+![Diagram illustrating the margin convention](img/chart-convention.png?raw=true)
 
 First, define an object representing the width of the margins
 
