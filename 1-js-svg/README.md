@@ -114,7 +114,7 @@ Let's take a closer look at these attributes and elements.
 Think of an SVG as a cartesian plane — `cx` is the x location of the circle, `cy` is the x location and `r` is the radius. D3 provides a helpful formula called d3.scaleSqrt() for when you want to scale circles by their area (which you should do).
 
 ##### [`<g>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g)
-- The `<g>` element in SVGs doesn't render. Instead, it's a grouping element that we use to group similar elements together — in this case, two rectangles. As an added benefit, they keep our SVG structure organized, so it’s easier to find what you are looking for while inspecting with your dev tools.
+The `<g>` element in SVGs doesn't render. Instead, it's a grouping element that we use to group similar elements together — in this case, two rectangles. As an added benefit, they keep our SVG structure organized, so it’s easier to find what you are looking for while inspecting with your dev tools.
 
 ##### [`<transform>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform)
 This attribute is a powerful tool which you can use to rotate and skew your image. We often `translate` to add padding and make room for elements such as the chart axis.
