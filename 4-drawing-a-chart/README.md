@@ -31,9 +31,7 @@ Since we still want the total dimension of our SVG to be 500 x 300, we need to a
 		.attr('width', width + margin.left + margin.right)
 		.attr('height', height + margin.top + margin.bottom)
 
-To actually account for the margin, we need to introduce a new SVG concept: `<g>`. It’s a grouping element. They are invisible, but we can use them to translate all the content inside them. As an added benefit, they keep our SVG structure organized, so it’s easier to find what you are looking for while inspecting with your dev tools.
-
-We also need to use the `transform` attribute. This is a powerful tool which you can use to rotate and skew your image. All we need to do right now is translate. The syntax looks like this `translate(10, 10)` to move an object 10px left and 10px down.
+To actually account for the margin, will use the `<g>` grouping element and the `transform` attribute to move an object 10px left and 10px down.
 
 Let’s append a `<g>` and translate it now:
 
@@ -112,7 +110,7 @@ And change `axisG`’s transform:
 
 ## Labels
 
-To finish our axis, we need to add text describing what it is showing. We can do this with the SVG `<text>` element. To write text, use the `.text()` function. In our transform, the margin convention pays off again: centering is as easy as an x offset of `width / 2`. Another way to nudge your `<text>` position is with the `dx` and `dy` attributes. The [`text-anchor` attribute][6] is SVG’s way of specifying text alignment. The possible values are `start` (left-aligned, the default), `middle` (centered) and `end` (right-aligned).
+To finish our axis, we need to add text describing what it is showing. We can do this with the SVG `<text>` element. To write text, use the `.text()` function. In our transform, the margin convention pays off again: centering is as easy as an x offset of `width / 2`. Another way to nudge your `<text>` position is with the `dx` and `dy` attributes.
 
 	svg.append('text')
 	    .text('Health spending per person')
