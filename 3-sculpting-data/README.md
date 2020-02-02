@@ -59,7 +59,7 @@ You can do all kinds of fancy statistics with these methods, but for now we will
 
 To better match the structure of our chart, we often want to group data into nested structures, which we can do with [`d3.nest()`][4]. The syntax is a bit wonky, but once you learn how to use it, you’ll find it really useful.
 
-![Diagram illustrating what .nest() does](img/nest.png)
+![Diagram illustrating what .nest() does](https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/nest.png)
 
 Shan Carter built a tool called Mister Nester for trying out `d3.nest()` . We’ve given you a version in this repo, so go check it out now: [/mister-nester/][5]
 

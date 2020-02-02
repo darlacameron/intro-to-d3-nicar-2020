@@ -32,7 +32,7 @@ Try clicking the button. What happens?
 
 We already covered “enter” phase of the data join. There are two more: “update” for nodes that already entered but are sticking around and may have new values, and “exit” for nodes that are leaving the DOM. Here’s a diagram to illustrate what each of these are doing:
 
-![Diagram of D3 data join](img/data-join.png)
+![Diagram of D3 data join](https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/data-join.png)
 
 As they say, if anything on this graphic causes confusion, ignore the entire product. For another approach to explaining data joins, I recommend reading [this Observable notebook by Mike Bostock](https://observablehq.com/@d3/selection-join).
 
