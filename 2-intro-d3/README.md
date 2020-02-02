@@ -64,7 +64,7 @@ A neat thing that streamlines our D3 code is that both `.append()` and `.attr()`
 
 Refresh your browser and look in the Elements tab of the devtools to check if the `<svg>` is there. Note that the script tag with your code needs to go after the d3 tag because it is expecting that d3 is already loaded on the page.
 
-#### Exercise
+### Exercise
 Using the `.append()` and `.attr()` functions, recreate the SVG you wrote by hand in exercise 1, but this time entirely in JavaScript. Write this code in `script.js`. Delete everything from that file except for the `svg` that you just added.
 ---- 
 When you were writing code to draw the circles, did it feel like you were repeating yourself? It’s a good instinct to have when you are coding — perhaps the code you just wrote could be streamlined by writing parts of it in a for loop. We could do that, but d3 has a better way. It involves attaching data to your selection.

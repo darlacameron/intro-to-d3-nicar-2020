@@ -120,7 +120,7 @@ To finish our axis, we need to add text describing what it is showing. We can do
 		.attr('dy', -30)
 	    .attr('text-anchor', 'middle')
 
-#### Exercise
+### Exercise
 Using a data join, label each bar with the name of its country. Hint: follow the code you wrote to draw the bars as an example.
 
 [1]:	https://bl.ocks.org/mbostock/3019563

@@ -100,7 +100,7 @@ SVG stands for **scalable vector graphic** and it's an XML format that we often 
 - SVGs are two dimensional, and we can use them to chart  on an X and Y plane. Here, `cx` is the x location of the circle, `cy` is the x location and `r` is the radius. 
 - SVGs uses style attributes that are similar to HTML and CSS but just different enough to be annoying sometimes. Note the use of `stroke-width` instead of `border`! SVGs also take style attributes, so they can be styled with CSS via classes and IDs. Here's documentation on possible [SVG style attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute) in case you want to learn more.
 
-#### SVG Drawing Exercise
+### Exercise
 - Your first exercise is writing code to draw SVGs by hand. You'll write your SVG code directly in the `index.html` file in this folder.
 - Start by navigating to `localhost:8080/1-js-svg/` in your browser and loading `1-intro-d3/index.html` in a text editor.
 - First, take a couple minutes with your partner to look at this tutorial on [paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)

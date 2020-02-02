@@ -2,6 +2,8 @@
 
 If all you ever want to do with d3 is draw static charts, you already know all you need to know. But there’s a good chance you are interested in learning d3 because you saw a dynamic chart with slick transitions. To take advantage of these, we need to learn how d3 handles updating the data attached to our Selection.
 
+If your chart from step 4 is caught up with the example in `4-drawing-a-chart/final`, then great! You can keep working in the file from step 3. If you're a bit behind, no worries. In your text editor, open up `4-drawing-a-chart/final/chart.js` and start with that file.
+
 Note: some of the code we will write in the following section will go inside our `render()` function and some of it will go outside. In general, only the parts of the code that depend on the data need to be inside `render()`. Now it will become important that code that should only run once should be outside `render()` because we are going to call `render()` multiple times.
 
 Before we get started, lets add a simple interaction to our chart. First, in `index.html` add a button:
@@ -169,7 +171,7 @@ One other thing you can do is delay the transition with `.delay()`. This can cre
 
 Just like with PowerPoint, it is possible to overdo the transitions. Have fun for now in this workshop, but keep in mind that excessive transitions can distract from the point you are trying to make with your chart. A well-done transition helps the reader maintain continuity between the steps in your chart, but isn’t the main attraction.
 
-#### Exercise
+### Exercise
 
 Update the label code to use the same `.join()` pattern as the `<rect>`s. Add transitions to the labels so they sync up with the `<rects>`.
 
@@ -194,7 +196,7 @@ So instead of making the reader click a button, lets just have the graphic autom
 	    d3.interval(renderNextYear, DURATION * 2);
 	  })
 
-#### Exercise
+### Exercise
 
 Implement a prominent label that updates to show us what year we are looking at.
 

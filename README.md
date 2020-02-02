@@ -41,9 +41,13 @@ Instructors: [Darla Cameron](https://www.texastribune.org/about/staff/darla-came
 - In a browser, go to `http://localhost:8080/` to view the class files. 
 - We'll leave this server running all though class.
 
-#### Next steps: Our favorite resources for learning more. 
+## Next steps: How to put what you learned today into action 
+It's very improtant to know that we never write code from scratch — every project that our teams produce starts with a build environment that has a server, file compression, links to Google docs, deploy tools and more built in automatically. Both the Post and the Tribune work in kits that are written in Node.js, and the [Tribune's kit is open source](https://github.com/texastribune/data-visuals-create) and free for anyone to use. We highly encourage you to use something like this as a base for your work. 
+
+Here's some useful tutorials:
 - [The 2019 version of this class](https://github.com/csessig86/intro-to-d3-nicar-19)
 - [A day-long D3 class that John taught](https://github.com/jmuyskens/big-data-ignite-d3-workshop)
 - [Free Code Camp](https://www.freecodecamp.org/learn/) 
 - [Learn JS Data](http://learnjsdata.com/index.html)
 - [Eloquent Javascript](https://eloquentjavascript.net/) 
+
