@@ -30,13 +30,13 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 - In our newsrooms, we try to limit D3 usage to when we need to be extra creative with visualization shape, do fancy transitions or update a graphic regularly. For example:
 	- The Washington Post's [police shootings database](https://www.washingtonpost.com/graphics/investigations/police-shootings-database/), which includes lots of dynamic charts and updates annually.
 	![Screengrab of shootings tracker][image-1]
-	
+
 	- The Washington Post's [coronavirus tracker](https://www.washingtonpost.com/world/2020/01/22/mapping-spread-new-coronavirus/?arc404=true), a dynamic map which can be updated multiple times per day.
 	![coronoavirus tracker][image-2]
-	
+
 	- The Texas Tribune's [migration tracker](https://apps.texastribune.org/features/2019/migrant-texas-border-trump-policies/), which updates monthly and has dynamic charts.
 	![migration tracker][image-3]
-	
+
 	- The Texas Tribune's [political district competitiveness index](https://apps.texastribune.org/features/2019/texas-turn-blue-voting-pattern-history/), where charts form an interactive narrative.
 	![heat index][image-4]
 
@@ -49,7 +49,7 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 - In a browser, go to `http://localhost:8080/` to view the class files.
 - We'll leave this server running all though class.
 
----- 
+----
 
 ## Next steps: How to put what you learned today into action
 Here's things that we have learned along the way that are worth considering as you start making graphics with d3.
@@ -99,14 +99,9 @@ Any of the following may be the right choice for you depending on your CMS, deve
 - Add clear headlines, notes and source lines
 	- The basics of chart-making always apply — leave no axis unlabeled! But all of the text around a graphic matters a lot. Be a good journalist and cite your sources — or even link directly to them. Your future self will thank you when you're trying to track down this data again.
 - Annotate all the things
-\<\<\<\<\<\<\< HEAD
-	- As an alternative to tooltips, graphics editors LOVE a nice, clean swoopy arrow with text at the end providing helpful context. (Seriously.) It's very easy to swoop arrows all day long in Illustrator, but unfortunately it's a bit harder in d3. [Swoopy Drag][21] is the best option for adding a bit of elegant annotation.
-	- Those arrows have to point to something, and it's usually text. Unfortunately, SVG `<text>` elements don't support multi-line text wrapping, so you'll have to use a function to wrap the text yourself. [This example][22] is fairly helpful.
-=======
 	- ![annotation example][image-5]
 	- As an alternative to tooltips, graphics editors LOVE a nice, clean swoopy arrow with text at the end providing helpful context. (Seriously.) It's very easy to swoop arrows all day long in Illustrator, but unfortunately it's a bit harder in d3. [Swoopy Drag](https://1wheel.github.io/swoopy-drag/) is the best option for adding a bit of elegant annotation.
 	- Those arrows have to point to something, and it's usually text. Unfortunately, SVG `<text>` elements don't support multi-line text wrapping, so you'll have to use a function to wrap the text yourself. [This example](https://bl.ocks.org/mbostock/7555321) is fairly helpful.
-> > > > > > > 4a91d3119b06bf87b3286c2caa6bd625e57f5d31
 		- Pro tip: you could also just put the text in an absolutely positioned `<p>` tag, which does support text wrapping, and use d3.scale to position it.
 - Make text more visible with casing
 	- ![casing example][image-1]
@@ -218,3 +213,8 @@ You can mix SVG and Canvas to get the best of both worlds. For instance, the Was
 [46]:	https://eloquentjavascript.net/
 
 [image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/casing.png
+[image-2]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/virus.png
+[image-3]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/migration.png
+[image-4]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/heat-index.png
+[image-5]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/anno.png
+[image-6]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/casing.png
