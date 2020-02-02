@@ -91,34 +91,30 @@ d3.select("body").append("p").text("Hello World!");
 SVG stands for **scalable vector graphic** and it's an XML format that we often use to draw two-dimensional shapes in D3. D3 comes with handy generators to help you draw into specific chart elements and shapes, such as circle, line, area, stack, arc, pie and symbol. These are great assists, but none of D3 is magic — it's all code written to generate and manipulate SVGs with data.
 
 #### How SVGs work:
-- SVGs have tags and look a lot like HTML, but they have different attributes and enable us to use geometry to draw shapes. Here's an example:
+- SVGs have tags and look a lot like HTML, but they have different attributes and enable us to use geometry to draw shapes. 
+- Let's draw some shapes together. Navigate to `localhost:8080/1-js-svg/` in your browser and load `1-intro-d3/index.html` in a text editor.
+- Type the following code:
 ```html 
-<svg width="100" height="100">
+<svg width="500" height="300">
   <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+  <g>
+    <rect x="150" y="50" width="100" height="100" fill="black"/>
+    <rect x="130" y="140" width="140" height="10" style="fill:black;"/>
+  </g>
+  <text x="200" y="300" text-anchor="middle">Hello, world</text>
+  <path d="M 200,230 L 230,240 L 200,250 z" style="fill:orange;" />
 </svg>
 ```
-- SVGs are two dimensional, and we can use them to chart  on an X and Y plane. Here, `cx` is the x location of the circle, `cy` is the x location and `r` is the radius. 
+
+A few things to note:
+- SVGs are two dimensional, and we use them to draw shapes on an X and Y plane. In the circle, `cx` is the x location of the circle, `cy` is the x location and `r` is the radius. 
 - SVGs uses style attributes that are similar to HTML and CSS but just different enough to be annoying sometimes. Note the use of `stroke-width` instead of `border`! SVGs also take style attributes, so they can be styled with CSS via classes and IDs. Here's documentation on possible [SVG style attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute) in case you want to learn more.
+- The `<g>` element in SVGs doesn't render. Instead, we use it to group similar elements together — in this case, two rectangles. This helps organize complex files later on — it comes in handy for chart axis.
+- You can write `<text>` direclty in SVGs. `text-anchor` works like paragraph alignment in a word processor or design program.
+- The least inuitive element here is the `<path>`, which draws a triangle. The `d` attribute contains a series of commands that define the path to be drawn. Don't worry too much about those — d3 hides most of these drawing steps behind the scenes.
 
 ### Exercise
-- Your first exercise is writing code to draw SVGs by hand. You'll write your SVG code directly in the `index.html` file in this folder.
-- Start by navigating to `localhost:8080/1-js-svg/` in your browser and loading `1-intro-d3/index.html` in a text editor.
-- First, take a couple minutes with your partner to look at this tutorial on [paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
-- Then, in the index.html file of this folder, draw at least two different path shapes in an SVG. You can draw any shape you'd like — try this [conference hotel building](https://www.marriott.com/hotels/travel/msyla-new-orleans-marriott/) or a snowman! 
-
-Once you're done drawing your shapes, here's a couple examples to add to your code. Two rectangles:
-```html
-<rect x="150" y="0" width="100" height="130" style="fill:black;"/>
-<rect x="130" y="130" width="140" height="10" style="fill:black;"/>
-```
-
-And a triangle. (Check out the file in `final/index.html` to see these shapes in context!)
-```html 
-<path d="M 200,230 L
-      230,240 L
-      200,250 z" 
-	style="fill:orange;" />
-```
+- Use at least three <rect>s to draw a profile of the [conference hotel](https://www.google.com/search?q=new-orleans-marriott&client=firefox-b-1-d&source=lnms&tbm=isch&sa=X&ved=2ahUKEwifrdnihLLnAhXBknIEHW3OC-8Q_AUoAnoECBAQBA&biw=1440&bih=781).
 
 ---- 
 #### Pro tip:
