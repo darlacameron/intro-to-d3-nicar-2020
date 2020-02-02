@@ -104,7 +104,7 @@ Any of the following may be the right choice for you depending on your CMS, deve
 	- Those arrows have to point to something, and it's usually text. Unfortunately, SVG `<text>` elements don't support multi-line text wrapping, so you'll have to use a function to wrap the text yourself. [This example](https://bl.ocks.org/mbostock/7555321) is fairly helpful.
 		- Pro tip: you could also just put the text in an absolutely positioned `<p>` tag, which does support text wrapping, and use d3.scale to position it.
 - Make text more visible with casing
-	- ![casing example][image-1]
+	- ![casing example][image-6]
 	- Labels on top of a brightly colored map can be hard to read. Use CSS to add subtle white shadow or stroke around the text so text is legible.
 		- Pro tip: Set the SVG `paint-order: stroke fill;` to make sure the casing doesn't distort your type. The paint-order attribute specifies the order that the fill, stroke, and markers of a given shape or text element are drawn.
 
