@@ -44,7 +44,7 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 
 
 
----- 
+----
 =======
 	- The Washington Post's [police shootings database](https://www.washingtonpost.com/graphics/investigations/police-shootings-database/), which includes lots of dynamic charts and updates annually.
 	![Screengrab of shootings tracker][image-1]
@@ -52,7 +52,7 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 	- The Washington Post's [coronavirus tracker](https://www.washingtonpost.com/world/2020/01/22/mapping-spread-new-coronavirus/?arc404=true), a dynamic map which can be updated multiple times per day.
 	![coronoavirus tracker][image-2]
 
-	- The Texas Tribune's [migration tracker](https://apps.texastribune.org/features/2019/migrant-texas-border-trump-policies/), which updates monthly and has dynamic charts. 
+	- The Texas Tribune's [migration tracker](https://apps.texastribune.org/features/2019/migrant-texas-border-trump-policies/), which updates monthly and has dynamic charts.
 	![migration tracker][image-3]
 
 	- The Texas Tribune's [political district competitiveness index](https://apps.texastribune.org/features/2019/texas-turn-blue-voting-pattern-history/), where charts form an interactive narrative.
@@ -64,7 +64,7 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 - Open the terminal or command line app on the laptop provided by IRE. They have helpfully installed a [http-server](https://www.npmjs.com/package/http-server) for us.
 - Navigate to the class folder, `intro-to-d3-nicar-2020`.
 - Type `http-server -c-1` in the terminal. (The `-c-1` command disables caching.)
-- In a browser, go to `http://localhost:8080/` to view the class files. 
+- In a browser, go to `http://localhost:8080/` to view the class files.
 - We'll leave this server running all though class.
 
 ----
@@ -74,7 +74,7 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 Here's things that we have learned along the way that are worth considering as you start making graphics with d3.
 
 <<<<<<< HEAD
----- 
+----
 =======
 
 >>>>>>> 4a91d3119b06bf87b3286c2caa6bd625e57f5d31
@@ -129,7 +129,7 @@ Any of the following may be the right choice for you depending on your CMS, deve
 =======
 	- ![annotation example][image-5]
 	- As an alternative to tooltips, graphics editors LOVE a nice, clean swoopy arrow with text at the end providing helpful context. (Seriously.) It's very easy to swoop arrows all day long in Illustrator, but unfortunately it's a bit harder in d3. [Swoopy Drag](https://1wheel.github.io/swoopy-drag/) is the best option for adding a bit of elegant annotation.
-	- Those arrows have to point to something, and it's usually text. Unfortunately, SVG `<text>` elements don't support multi-line text wrapping, so you'll have to use a function to wrap the text yourself. [This example](https://bl.ocks.org/mbostock/7555321) is fairly helpful. 
+	- Those arrows have to point to something, and it's usually text. Unfortunately, SVG `<text>` elements don't support multi-line text wrapping, so you'll have to use a function to wrap the text yourself. [This example](https://bl.ocks.org/mbostock/7555321) is fairly helpful.
 >>>>>>> 4a91d3119b06bf87b3286c2caa6bd625e57f5d31
 		- Pro tip: you could also just put the text in an absolutely positioned `<p>` tag, which does support text wrapping, and use d3.scale to position it.
 - Make text more visible with casing
@@ -149,10 +149,10 @@ Testing your work in various browsers is an important step in the development pr
 
 Internet Explorer [did not support SVG until version 9][26], and lots of Washington Post readers used older versions on their computers at work (read: federal government). We used to swap a lot of elaborate graphics out for non-responsive screen grabs.
 
-Some of the newer features we use in this workshop don’t work in older browsers. [Promises][27], [Arrow functions][28] and [Template literals][29] work in all modern browsers, but not IE11. If you want to use these features in older browsers you’ll need to provide [polyfills][30] for them. D3 version five [only supports modern browsers][31] and if you need to support older ones you’ll have to use older versions of the library or individual modules. 
+Some of the newer features we use in this workshop don’t work in older browsers. [Promises][27], [Arrow functions][28] and [Template literals][29] work in all modern browsers, but not IE11. If you want to use these features in older browsers you’ll need to provide [polyfills][30] for them. D3 version five [only supports modern browsers][31] and if you need to support older ones you’ll have to use older versions of the library or individual modules.
 
 #### Beware of old d3 examples with previous APIs older than v4
-- D3 was first released in 2012, and it's now on version 5! For security reasons, we recommend using the latest and greatest version. The last few [changes][32] have changed the code's structure in big ways, and examples before v4 will not work with the current versions. As you're googling around to solve a bug, keep an eye out for old examples and avoid them. 
+- D3 was first released in 2012, and it's now on version 5! For security reasons, we recommend using the latest and greatest version. The last few [changes][32] have changed the code's structure in big ways, and examples before v4 will not work with the current versions. As you're googling around to solve a bug, keep an eye out for old examples and avoid them.
 
 #### [Observable][33]
 - Mike Bostock is all in on his cool new tool for writing code. You'll see lots of newer d3 examples in this format.
@@ -173,20 +173,19 @@ d3 is pretty great for mapping — most newsrooms use d3 + canvas for their elec
 
 #### Canvas
 
-Canvas, like SVG, is tool you can use to draw graphics that comes built-in to your browser. The big difference is that Canvas is a raster (read: pixel) rather than vector-based technology. It is not resolution-independent, so if you blow it up it will look pixelated. In fact, the default Canvas pixel ratio looks pixelated on today’s high density displays (you can adjust this to match the display). 
+Canvas, like SVG, is tool you can use to draw graphics that comes built-in to your browser. The big difference is that Canvas is a raster (read: pixel) rather than vector-based technology. It is not resolution-independent, so if you blow it up it will look pixelated. In fact, the default Canvas pixel ratio looks pixelated on today’s high density displays (you can adjust this to match the display).
 
 [Link: MDN documentation for Canvas][41]
 
-The way you work with Canvas in D3 is quite different as well. The biggest thing is that the Join pattern doesn’t work anymore, which means that D3’s convenient transitions are out the window as well. The reason being that Canvas doesn’t have different DOM elements for each shape. Instead there is one DOM element (the `<canvas>`) and you have to paint each shape individually onto it. 
+The way you work with Canvas in D3 is quite different as well. The biggest thing is that the Join pattern doesn’t work anymore, which means that D3’s convenient transitions are out the window as well. The reason being that Canvas doesn’t have different DOM elements for each shape. Instead there is one DOM element (the `<canvas>`) and you have to paint each shape individually onto it.
 
-<<<<<<< HEAD
 For instance, to draw a rectangle, instead of a `<rect>` there is [`.fillRect()`][42]. To draw a circle there is [`.arc()`][43]. If you want to draw many shapes based on your data you’ll need to loop over your data instead of using a data join. If you want to implement an animation, you’ll need to write code that draws each frame in succession. Implementing interaction is also more complex because there is no built-in way for the browser to tell whether the place you tapped has a shape on it or not – you have to manage this yourself.
 
 The main reason to use Canvas over SVG is that it performs much better when your graphic is complex, for instance, a scatter plot with thousands of circles or a map with detailed country borders. Where this makes a big difference is if you want to animate your graphic.
 
-D3 feels more native when working with SVG, but a few parts of D3 can be used with either SVG or Canvas. The generators in [the d3-shape module][44] can be used with either technology. Likewise, [d3.geoPath][45] can be used to draw GeoJSON features on an SVG or Canvas-based map. 
+D3 feels more native when working with SVG, but a few parts of D3 can be used with either SVG or Canvas. The generators in [the d3-shape module][44] can be used with either technology. Likewise, [d3.geoPath][45] can be used to draw GeoJSON features on an SVG or Canvas-based map.
 
-You can mix SVG and Canvas to get the best of both worlds. For instance, the Washington Post’s [database of school shootings][46] uses a canvas layer for animation and an SVG layer for axes, annotations and interaction. Another example is [this graphic][47] which shows how each county voted in the presidential elections from 2000-2012. The axes and labels are drawn in SVG while the lines for all the counties are in Canvas. 
+You can mix SVG and Canvas to get the best of both worlds. For instance, the Washington Post’s [database of school shootings][46] uses a canvas layer for animation and an SVG layer for axes, annotations and interaction. Another example is [this graphic][47] which shows how each county voted in the presidential elections from 2000-2012. The axes and labels are drawn in SVG while the lines for all the counties are in Canvas.
 
 #### Some useful tutorials
 - [The 2019 version of this class][48]
@@ -247,7 +246,7 @@ You can mix SVG and Canvas to get the best of both worlds. For instance, the Was
 [50]:	https://www.freecodecamp.org/learn/
 [51]:	http://learnjsdata.com/index.html
 [52]:	https://eloquentjavascript.net/
-=======
+
 
 [image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/shootings.png?v0
 [image-2]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/virus.png
@@ -255,4 +254,3 @@ You can mix SVG and Canvas to get the best of both worlds. For instance, the Was
 [image-4]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/heat-index.png
 [image-5]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/anno.png
 [image-6]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/casing.png
->>>>>>> 4a91d3119b06bf87b3286c2caa6bd625e57f5d31
