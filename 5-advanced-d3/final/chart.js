@@ -42,7 +42,7 @@ let yearLabel = svg.append('text')
 
 let updateSize = () => {
   width = chartContainer.node().clientWidth - margin.right - margin.left
-  svg.attr('width', width + margin.right + margin.left)
+  chartContainer.select('svg').attr('width', width + margin.right + margin.left)
   scaleX.range([0, width])
   axisLabel.attr('transform', `translate(${width / 2}, -30)`)
 }

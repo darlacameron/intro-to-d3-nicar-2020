@@ -178,11 +178,18 @@ The upshot of this is not that we don’t do anything interactive anymore, but r
 
 So instead of making the reader click a button, lets just have the graphic automatically advance. To do this, we can use [`d3-timer`][6]. 
 
-	d3.interval(() => {
-	      render(dataYears[++year])
-	      // loop back to 1970 after 2015
-	      if (year === 2015) year = 1970;
-	    }, DURATION)
+	d3.csv('../../data/oecd.csv')
+	  .then(sculptData)
+	  .then(dataYears => {
+	    let year = 1970;
+	    let renderNextYear = () => {
+	      yearLabel.text(year)
+	      render(dataYears[year])
+	      if (++year > 2015) year = 1970;
+	    }
+	    renderNextYear();
+	    d3.interval(renderNextYear, DURATION * 2);
+	  })
 
 #### Exercise
 
@@ -209,7 +216,7 @@ Now it looks good when you first load the page, but what happens if the screen s
 
 	let updateSize = () => {
 	  width = chartContainer.node().clientWidth - margin.right - margin.left
-	  svg.attr('width', width + margin.right + margin.left)
+	  chartContainer.select('svg').attr('width', width + margin.right + margin.left)
 	  scaleX.range([0, width])
 	  axisLabel.attr('transform', `translate(${width / 2}, -30)`)
 	}
