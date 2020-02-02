@@ -110,7 +110,7 @@ Before we move on, I’ll mention two more scales that I use pretty frequently. 
 
 To conclude this section, let’s make use of our data and scales with an exercise.
 
-#### Exercise
+### Exercise
 Using the data join we learned in step 2, and the data we loaded as well as the two scales we just set up, draw a basic bar chart with SVG `<rect>`s.
 
 
