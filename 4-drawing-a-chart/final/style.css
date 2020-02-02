@@ -1,3 +1,15 @@
 html, body {
   font-family: Helvetica, Arial, sans-serif;
 }
+
+.axis path {
+	display: none;
+}
+
+.axis text {
+	font-size: 14px;
+}
+
+.axis line {
+	stroke: #bbb;
+}

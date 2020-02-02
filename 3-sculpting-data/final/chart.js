@@ -1,3 +1,20 @@
+let chartContainer = d3.select('div#chart')
+let width = 700
+let height = 500
+
+let svg = chartContainer
+  .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+
+let scale = d3.scaleLinear()
+  .range([0, width])
+
+let scaleY = d3.scaleBand()
+  .domain(d3.range(0, 10))
+  .range([0, height])
+  .padding(0.05)
+
 function sculptData(raw) {
   console.log(raw);
   let data = raw.map(d => {
@@ -14,32 +31,7 @@ function sculptData(raw) {
     .key(function(d) { return d.name })
     .entries(data)
 
-  return dataYears['$1970']
-}
-
-// Margin convention
-let margin = {top: 10, right: 10, left: 10, bottom: 10}
-let width = 700 - margin.right - margin.left
-let height = 500 - margin.top - margin.bottom
-
-let svg = d3.select('div#chart')
-  .append('svg')
-    .attr('width', width + margin.right + margin.left)
-    .attr('height', height + margin.top + margin.bottom)
-  .append('g')
-    .attr('transform', `translate(${margin.left}, ${margin.top})`)
-
-let scale = d3.scaleLinear()
-  .range([0, width])
-
-let scaleY = d3.scaleBand()
-  .domain(d3.range(0, 10))
-  .range([0, height])
-  .padding(0.05)
-
-
-function render(raw) {
-  let data = raw
+  let data = dataYears['$1970']
     .sort((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
     .slice(0, 10)
 
@@ -58,4 +50,3 @@ function render(raw) {
 
 d3.csv('../../data/oecd.csv')
   .then(sculptData)
-  .then(render)

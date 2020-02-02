@@ -1,17 +1,11 @@
-// Margin convention
-let margin = {top: 10, right: 10, left: 10, bottom: 10}
-let width = 700 - margin.right - margin.left
-let height = 500 - margin.top - margin.bottom
+let chartContainer = d3.select('div#chart')
+let width = 700
+let height = 500
 
-// because we are hot loading:
-d3.selectAll('svg').remove()
-
-let svg = d3.select('div#chart')
+let svg = chartContainer
   .append('svg')
-    .attr('width', width + margin.right + margin.left)
-    .attr('height', height + margin.top + margin.bottom)
-  .append('g')
-    .attr('transform', `translate(${margin.left}, ${margin.top})`)
+    .attr('width', width)
+    .attr('height', height)
 
 let snowBody = svg.append('g')
   .attr('fill', 'white')
@@ -26,7 +20,7 @@ let circles = [
 snowBody.selectAll('circle')
   .data(circles)
   .enter().append('circle')
-  .attr('r' d => d.r)
+  .attr('r', d => d.r)
   .attr('cx', d => d.cx)
   .attr('cy', d => d.cy)
 

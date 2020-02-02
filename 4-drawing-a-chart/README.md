@@ -8,6 +8,8 @@ If your chart from step 3 is caught up with the example in `3-sculpting-data/fin
 
 First of all, we need to a make some space for axes. You can do this in many ways, but there is one so common we refer to it here as the [Margin Convention](https://bl.ocks.org/mbostock/3019563).
 
+![Diagram illustrating the margin convention](https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/chart-convention.png)
+
 First, define an object representing the width of the margins
 
 	let margin = {
@@ -29,13 +31,13 @@ Since we still want the total dimension of our SVG to be 500 x 300, we need to a
 		.attr('width', width + margin.left + margin.right)
 		.attr('height', height + margin.top + margin.bottom)
 
-To actually account for the margin, we need to introduce a new SVG concept: `<g>`. It’s a grouping element. They are invisible, but we can use them to translate all the content inside them. As an added benefit, they keep our SVG structure organized, so it’s easier to find what you are looking for while inspecting with your dev tools. 
+To actually account for the margin, we need to introduce a new SVG concept: `<g>`. It’s a grouping element. They are invisible, but we can use them to translate all the content inside them. As an added benefit, they keep our SVG structure organized, so it’s easier to find what you are looking for while inspecting with your dev tools.
 
 We also need to use the `transform` attribute. This is a powerful tool which you can use to rotate and skew your image. All we need to do right now is translate. The syntax looks like this `translate(10, 10)` to move an object 10px left and 10px down.
 
 Let’s append a `<g>` and translate it now:
 
-	let svg = d3.select('body')
+	let svg = chartContainer
 		.append('svg')
 		.attr('width', width + margin.left + margin.right)
 		.attr('height', height + margin.top + margin.bottom)
@@ -72,9 +74,45 @@ If you want to learn more about how `selection.call()` behaves, [check out the d
 
 The axis is now on the page! But if might be cut off a bit if our `margin.top` isn’t big enough. Try increasing it until the entire axis is visible.
 
+## Customizing the axis
+
+D3’s default axis design isn’t for everyone. You will likely need to customize it a bit to match your house styles.
+
+First of all lets customize the number and format of the ticks with [`.ticks()`][3]:
+
+	let axis = d3.axisTop(scaleX)
+	  .ticks(3, '$,r')
+
+This tells D3 we want about 3 ticks (D3 chooses “nice” values for these, so the exact count may vary) with numbers formatted as currency with commas and decimal notation. These format codes are documented in [the d3-format module][4].
+
+Next, lets kill that horizontal axis line. We can do this with CSS. Open `style.css` and write the following:
+
+	.axis path {
+		display: none;
+	}
+
+While we are at it, lets make the tick labels a bit larger and the ticks themselves more subtle.
+
+	.axis text {
+		font-size: 14px;
+	}
+
+	.axis line {
+		stroke: #bbb;
+	}
+
+Finally, lets make the axis tick extend across the entire chart.
+
+	let axis = d3.axisTop(scaleX)
+	  .ticks(3, '$,r')
+	  .tickSize(height)
+
+And change `axisG`’s transform:
+	.attr('transform', `translate(0, ${height - 5})`)
+
 ## Labels
 
-To finish our axis, we need to add text describing what it is showing. We can do this with the SVG `<text>` element. To write text, use the `.text()` function. In our transform, the margin convention pays off again: centering is as easy as an x offset of `width / 2`. Another way to nudge your `<text>` position is with the `dx` and `dy` attributes. The [`text-anchor` attribute][3] is SVG’s way of specifying text alignment. The possible values are `start` (left-aligned, the default), `middle` (centered) and `end` (right-aligned).
+To finish our axis, we need to add text describing what it is showing. We can do this with the SVG `<text>` element. To write text, use the `.text()` function. In our transform, the margin convention pays off again: centering is as easy as an x offset of `width / 2`. Another way to nudge your `<text>` position is with the `dx` and `dy` attributes. The [`text-anchor` attribute][5] is SVG’s way of specifying text alignment. The possible values are `start` (left-aligned, the default), `middle` (centered) and `end` (right-aligned).
 
 	svg.append('text')
 	    .text('Health spending per person')
@@ -87,4 +125,6 @@ Using a data join, label each bar with the name of its country. Hint: follow the
 
 [1]:	https://github.com/d3/d3-axis
 [2]:	https://github.com/d3/d3-selection#selection_call
-[3]:	https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor
+[3]:	https://github.com/d3/d3-scale/blob/master/README.md#continuous_tickFormat
+[4]:	https://github.com/d3/d3-format
+[5]:	https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor
