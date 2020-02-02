@@ -100,12 +100,12 @@ Any of the following may be the right choice for you depending on your CMS, deve
 - Add clear headlines, notes and source lines
 	- The basics of chart-making always apply — leave no axis unlabeled! But all of the text around a graphic matters a lot. Be a good journalist and cite your sources — or even link directly to them. Your future self will thank you when you're trying to track down this data again.
 - Annotate all the things
-	![annotation example][image-5]
+	- ![annotation example][image-5]
 	- As an alternative to tooltips, graphics editors LOVE a nice, clean swoopy arrow with text at the end providing helpful context. (Seriously.) It's very easy to swoop arrows all day long in Illustrator, but unfortunately it's a bit harder in d3. [Swoopy Drag](https://1wheel.github.io/swoopy-drag/) is the best option for adding a bit of elegant annotation.
 	- Those arrows have to point to something, and it's usually text. Unfortunately, SVG `<text>` elements don't support multi-line text wrapping, so you'll have to use a function to wrap the text yourself. [This example](https://bl.ocks.org/mbostock/7555321) is fairly helpful. 
 		- Pro tip: you could also just put the text in an absolutely positioned `<p>` tag, which does support text wrapping, and use d3.scale to position it.
 - Make text more visible with casing
-	![casing example][image-6]
+	- ![casing example][image-6]
 	- Labels on top of a brightly colored map can be hard to read. Use CSS to add subtle white shadow or stroke around the text so text is legible.
 		- Pro tip: Set the SVG `paint-order: stroke fill;` to make sure the casing doesn't distort your type. The paint-order attribute specifies the order that the fill, stroke, and markers of a given shape or text element are drawn.
 
