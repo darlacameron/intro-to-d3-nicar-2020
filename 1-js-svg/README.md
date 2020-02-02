@@ -114,7 +114,7 @@ A few things to note:
 - The least inuitive element here is the `<path>`, which draws a triangle. The `d` attribute contains a series of commands that define the path to be drawn. Don't worry too much about those — d3 hides most of these drawing steps behind the scenes.
 
 ### Exercise
-- Use at least three <rect>s to draw a profile of the [conference hotel](https://www.google.com/search?q=new-orleans-marriott&client=firefox-b-1-d&source=lnms&tbm=isch&sa=X&ved=2ahUKEwifrdnihLLnAhXBknIEHW3OC-8Q_AUoAnoECBAQBA&biw=1440&bih=781).
+- Use at least three `<rect>`s to draw a profile of the [conference hotel](https://www.google.com/search?q=new-orleans-marriott&client=firefox-b-1-d&source=lnms&tbm=isch&sa=X&ved=2ahUKEwifrdnihLLnAhXBknIEHW3OC-8Q_AUoAnoECBAQBA&biw=1440&bih=781).
 
 ---- 
 #### Pro tip:
