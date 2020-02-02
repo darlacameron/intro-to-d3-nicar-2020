@@ -1,10 +1,10 @@
 var codeSamples = [
 // Default
-{ label: "Identity", code: "d3.nest()\n  .map(data);"},
-{ label: "By country", code: "d3.nest()\n  .key(function(d) { return d.name; })\n  .map(data);"},
-{ label: "By year", code: "d3.nest()\n  .key(function(d) { return d.year; })\n  .map(data);"},
-{ label: "Number of countries by year", code: "d3.nest()\n  .key(function(d) { return d.year; })\n  .rollup(function(d) { return d.length; })\n  .map(data);"},
-{ label: "By country (entries)", code: "d3.nest()\n  .key(function(d) { return d.name; })\n  .entries(data);"},
+{ label: "Identity", code: "d3.nest()\n  .object(data);"},
+{ label: "By country", code: "d3.nest()\n  .key(d => d.name)\n  .object(data);"},
+{ label: "By year", code: "d3.nest()\n  .key(d => d.year)\n  .object(data);"},
+{ label: "Number of countries by year", code: "d3.nest()\n  .key(d => d.year)\n  .rollup(d => d.length)\n  .object(data);"},
+{ label: "By country (entries)", code: "d3.nest()\n  .key(d => d.name)\n  .entries(data);"},
 ];
 
 var html = d3.select("#converter");
