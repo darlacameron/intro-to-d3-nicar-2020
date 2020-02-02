@@ -23,11 +23,11 @@ let scaleY = d3.scaleBand()
 
 let axis = d3.axisTop(scaleX)
   .ticks(3, '$,r')
-  .tickSize(height)
+  .tickSize(height + 15)
 
 let axisG = svg.append('g')
   .attr('class', 'axis')
-  .attr('transform', `translate(0, ${height - 5})`)
+  .attr('transform', `translate(0, ${height + 5})`)
 
 let axisLabel = svg.append('text')
   .text('Health spending per person')
@@ -88,7 +88,7 @@ let render = (raw) => {
     .ease(d3.easePolyOut)
     .delay((d, i) => i * 75)
     .attr('transform', 'translate(0, 0)')
-    .attr('opacity', 1)
+    .attr('opacity', 0.5)
     .attr('width', d => scaleX(+d.healthExpPerCapita))
     .attr('y', (d, i) => scaleY(i))
 
