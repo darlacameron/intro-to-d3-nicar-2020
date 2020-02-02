@@ -24,15 +24,19 @@ function sculptData(raw) {
   })
 
   let dataYears = d3.nest()
-    .key(function(d) { return d.year })
-    .map(data)
+    .key(d => d.year)
+    .sortValues((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
+    .object(data)
 
   let dataCountries = d3.nest()
-    .key(function(d) { return d.name })
+    .key(d => d.name)
     .entries(data)
 
-  let data = dataYears['$1970']
-    .sort((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
+  return dataYears
+}
+
+function render(raw) {
+  let data = raw[1970]
     .slice(0, 10)
 
   let maxValue = d3.max(data, d => +d.healthExpPerCapita)
@@ -50,3 +54,4 @@ function sculptData(raw) {
 
 d3.csv('../../data/oecd.csv')
   .then(sculptData)
+  .then(render)

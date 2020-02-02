@@ -59,31 +59,59 @@ You can do all kinds of fancy statistics with these methods, but for now we will
 
 To better match the structure of our chart, we often want to group data into nested structures, which we can do with [`d3.nest()`][4]. The syntax is a bit wonky, but once you learn how to use it, you’ll find it really useful.
 
-![Diagram illustrating what .nest() does](https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/nest.png)
+![Diagram illustrating what .nest() does][image-1]
 
 Shan Carter built a tool called Mister Nester for trying out `d3.nest()` . We’ve given you a version in this repo, so go check it out now: [/mister-nester/][5]
 
-TODO: more instructions around nest()
+Nest always start with `d3.nest()`. Then we define our groupings with `.key(accessorFunc)`. You can add as many `.key()`s as you want to nest by multiple levels. To sort the values, use `.sortValues(sortFunc)`. Finally, we pass in the data: `.object(data)` returns an object with attributes for each group and values that are arrays of the grouped items. `.entries(data)` returns an array of objects with keys and values. Try each of these out in Mister Nester.
 
-Let’s nest our data by year:
+Once you’ve spent some time playing with that, write the following inside `sculptData()`:
 
-	groupedByYear = d3.nest()
-	  .key(d => d.year)
-	  .map(data)
+	  let dataYears = d3.nest()
+	    .key(d => d.year)
+	    .sortValues((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
+	    .object(data)
 
-----
+Let’s also group by countries, this time using `.entries()`:
+
+	  let dataCountries = d3.nest()
+	    .key(d => d.name)
+	    .entries(data)
+
+---- 
 #### Nerd note:
 > Mike Bostock has indicated that `d3.nest()` is deprecated. In d3 version 6.0, there will be a new `d3-array` method [`d3.group()`][6]. To be honest, `d3.group()` looks a bit more straightforward than `d3.nest()` but some of us grew up with and will always be nostalgic for `d3.nest()`. You won’t have to switch over to 6.0 as soon as it comes out, but it is good to know that this is on the horizon.
-----
+---- 
+
+We’ll finish the `sculptData` function by returning `dataYears`:
+
+	return dataYears
+
+Before we get started with scales, lets set up the function that will ultimately draw our chart:
+
+	function render(raw) {
+	  // get the 10 countries with highest per capita spending in 1970
+	  let data = raw[1970]
+	    .slice(0, 10)
+	  
+	  // we already wrote this, now it will come in handy
+	  let maxValue = d3.max(data, d => +d.healthExpPerCapita)
+	}
+
+and call it after `sculptData`, in a data pipeline of sorts:
+
+	d3.csv('../../data/oecd.csv')
+	  .then(sculptData)
+	  .then(render)
 
 ## Scales
 Now that our data is in shape, we can get rady to make a chart. But first, we need to do one more kind of data transformation. We need to translate values from our data range into the pixel space available in the SVG. The [`d3-scale` module][7] provides methods for doing this. There are a ton of scales provided, but we’ll focus on just a few today.
 
-Let’s try `.scaleLinear()` to make an x axis scale for our chart:
+Let’s try `.scaleLinear()` to make an x axis scale for our chart. Write the following code near the top of `script.js`, outside of `sculptData()`:
 
 	let scaleX = d3.scaleLinear()
 
-For this scale to be useful, we need to define the domain of values (this may cause flashbacks to high school math).
+For this scale to be useful, we need to define the domain of values (this may cause flashbacks to high school math). Add the following line inside `render()`
 
 	scaleX.domain([0, maxVal])
 
@@ -93,7 +121,7 @@ Try it out:
 
 The scale also has a range, which we can see is set by default to `[0, 1]`. Most of the time, we want this to range to represent something about our visualization. In this case, the scale represents the x axis, so the range should be the width of the chart.
 
-	scaleX.range([0, 500])
+	scaleX.range([0, width])
 
 Now try this again:
 
@@ -123,3 +151,5 @@ Using the data join we learned in step 2, and the data we loaded as well as the 
 [7]:	https://github.com/d3/d3-scale
 [8]:	https://github.com/d3/d3-scale#scaleTime
 [9]:	https://github.com/d3/d3-scale#scaleSqrt
+
+[image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/nest.png

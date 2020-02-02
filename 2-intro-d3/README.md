@@ -50,11 +50,13 @@ Check out the Element tab in your devtools to see what happened.
 That’s enough of the console for now. Let’s write some code in the repo. Create a new file called `script.js` in this folder and write the following:
 
 	let chartContainer = d3.select('div#chart')
+	let width = 700
+	let height = 500
 	
 	let svg = chartContainer
 	  .append('svg')
-	  .attr('width', 500)
-	  .attr('height', 300)
+	  .attr('width', width)
+	  .attr('height', height)
 
 A neat thing that streamlines our D3 code is that both `.append()` and `.attr()` return a Selection, so we can call the next function directly on the Selection the previous function returned in a daisy-chained fashion. To get this code running, add the following line to `index.html` in the `<body>` right after the script tag with d3:
 
