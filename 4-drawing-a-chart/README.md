@@ -6,6 +6,8 @@ What we’ve done so far is cool, but it’s not a chart yet. Our visual is mean
 
 First of all, we need to a make some space for axes. You can do this in many ways, but there is one so common we refer to it here as the Margin Convention.
 
+![Diagram illustrating the margin convention](img/chart-convention.png)
+
 First, define an object representing the width of the margins
 
 	let margin = {
@@ -27,7 +29,7 @@ Since we still want the total dimension of our SVG to be 500 x 300, we need to a
 		.attr('width', width + margin.left + margin.right)
 		.attr('height', height + margin.top + margin.bottom)
 
-To actually account for the margin, we need to introduce a new SVG concept: `<g>`. It’s a grouping element. They are invisible, but we can use them to translate all the content inside them. As an added benefit, they keep our SVG structure organized, so it’s easier to find what you are looking for while inspecting with your dev tools. 
+To actually account for the margin, we need to introduce a new SVG concept: `<g>`. It’s a grouping element. They are invisible, but we can use them to translate all the content inside them. As an added benefit, they keep our SVG structure organized, so it’s easier to find what you are looking for while inspecting with your dev tools.
 
 We also need to use the `transform` attribute. This is a powerful tool which you can use to rotate and skew your image. All we need to do right now is translate. The syntax looks like this `translate(10, 10)` to move an object 10px left and 10px down.
 
@@ -72,14 +74,14 @@ The axis is now on the page! But if might be cut off a bit if our `margin.top` i
 
 ## Customizing the axis
 
-D3’s default axis design isn’t for everyone. You will likely need to customize it a bit to match your house styles. 
+D3’s default axis design isn’t for everyone. You will likely need to customize it a bit to match your house styles.
 
 First of all lets customize the number and format of the ticks with [`.ticks()`][3]:
 
 	let axis = d3.axisTop(scaleX)
 	  .ticks(3, '$,r')
 
-This tells D3 we want about 3 ticks (D3 chooses “nice” values for these, so the exact count may vary) with numbers formatted as currency with commas and decimal notation. These format codes are documented in [the d3-format module][4]. 
+This tells D3 we want about 3 ticks (D3 chooses “nice” values for these, so the exact count may vary) with numbers formatted as currency with commas and decimal notation. These format codes are documented in [the d3-format module][4].
 
 Next, lets kill that horizontal axis line. We can do this with CSS. Open `style.css` and write the following:
 
@@ -92,7 +94,7 @@ While we are at it, lets make the tick labels a bit larger and the ticks themsel
 	.axis text {
 		font-size: 14px;
 	}
-	
+
 	.axis line {
 		stroke: #bbb;
 	}

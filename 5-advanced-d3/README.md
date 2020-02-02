@@ -57,7 +57,6 @@ Now, if you want something to happen only on the update phase, we can make that 
 
 What happens when we click the button now? Notice how Denmark appears on the chart. Since this is a new `<rect>` we would expect it to be salmon-colored. But instead all the rects are papayawhip, as if they were all already there before.
 
-
 The issue is that D3 isn’t smart enough to know that we have a new country in our chart. We have to tell D3 that we care about tracking the countries in our join. To do this, we can pass an accessor function to `.data()`:
 
 	let bars = svg.selectAll('rect')

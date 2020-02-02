@@ -1,8 +1,8 @@
 # Sculpting data
 
-As data journalists, we have to work with data in a variety of shapes: tidy and wide, flat and nested. When we are working with d3, however, the best shape for our data is one that matches the structure of the document we are creating with it. Fortunately, JavaScript and d3 come with some good tools for re-shaping our data. 
+As data journalists, we have to work with data in a variety of shapes: tidy and wide, flat and nested. When we are working with d3, however, the best shape for our data is one that matches the structure of the document we are creating with it. Fortunately, JavaScript and d3 come with some good tools for re-shaping our data.
 
-But first, let’s use d3 to load some real data into the browser. The functions we are using are in the `d3-fetch` module. 
+But first, let’s use d3 to load some real data into the browser. The functions we are using are in the `d3-fetch` module.
 
 [Link: documentation for `d3-fetch`][1]
 
@@ -15,7 +15,7 @@ The data we are trying to load is CSV-formatted. It's located in the `data` fold
 			console.log('Data is ready:', data);
 		})
 
-`d3.csv()` returns a Promise which loads and parses our data. The function we pass to `.then()` will be called when our data is ready to use. 
+`d3.csv()` returns a Promise which loads and parses our data. The function we pass to `.then()` will be called when our data is ready to use.
 
 Now we have data. Use the console to examine the structure of one entry in the array, noting the variable names and what type they are.
 
@@ -43,7 +43,7 @@ and `.filter()` to limit the data to just one country
 	australia = data.filter(d => d.name === 'Australia')
 
 and `.sort()` to re-order the data
-	
+
 	sortedByYear = australia.sort((a, b) => a.year - b.year)
 	console.log(sortedByYear)
 
@@ -59,6 +59,8 @@ You can do all kinds of fancy statistics with these methods, but for now we will
 
 To better match the structure of our chart, we often want to group data into nested structures, which we can do with [`d3.nest()`][4]. The syntax is a bit wonky, but once you learn how to use it, you’ll find it really useful.
 
+![Diagram illustrating what .nest() does](img/nest.png)
+
 Shan Carter built a tool called Mister Nester for trying out `d3.nest()` . We’ve given you a version in this repo, so go check it out now: [/mister-nester/][5]
 
 TODO: more instructions around nest()
@@ -69,10 +71,10 @@ Let’s nest our data by year:
 	  .key(d => d.year)
 	  .map(data)
 
----- 
+----
 #### Nerd note:
 > Mike Bostock has indicated that `d3.nest()` is deprecated. In d3 version 6.0, there will be a new `d3-array` method [`d3.group()`][6]. To be honest, `d3.group()` looks a bit more straightforward than `d3.nest()` but some of us grew up with and will always be nostalgic for `d3.nest()`. You won’t have to switch over to 6.0 as soon as it comes out, but it is good to know that this is on the horizon.
----- 
+----
 
 ## Scales
 Now that our data is in shape, we can get rady to make a chart. But first, we need to do one more kind of data transformation. We need to translate values from our data range into the pixel space available in the SVG. The [`d3-scale` module][7] provides methods for doing this. There are a ton of scales provided, but we’ll focus on just a few today.
@@ -104,7 +106,7 @@ We also need a scale for the y axis. We are going to be making a bar chart, and 
 	  .range([0, height])
 	  .padding(0.05)
 
-Before we move on, I’ll mention two more scales that I use pretty frequently. The first is [`d3.scaleTime()`][8] which is useful when your domain is time (and the type is Date). Another is [`d3.scaleSqrt()`][9] which comes in handy when you want to scale circles by their area (which you should do). 
+Before we move on, I’ll mention two more scales that I use pretty frequently. The first is [`d3.scaleTime()`][8] which is useful when your domain is time (and the type is Date). Another is [`d3.scaleSqrt()`][9] which comes in handy when you want to scale circles by their area (which you should do).
 
 To conclude this section, let’s make use of our data and scales with an exercise.
 
