@@ -2,9 +2,11 @@
 
 What we’ve done so far is cool, but it’s not a chart yet. Our visual is meaningless without axes and labels. So let’s add some.
 
+If your chart from step 3 is caught up with the example in `3-sculpting-data/final`, then great! You can keep working in the file from step 3. If you're a bit behind, no worries. In your text editor, open up `3-sculpting-data/final/chart.js` and start with that file.
+
 ## Margin convention
 
-First of all, we need to a make some space for axes. You can do this in many ways, but there is one so common we refer to it here as the Margin Convention.
+First of all, we need to a make some space for axes. You can do this in many ways, but there is one so common we refer to it here as the [Margin Convention](https://bl.ocks.org/mbostock/3019563).
 
 First, define an object representing the width of the margins
 
