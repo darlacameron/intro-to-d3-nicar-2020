@@ -212,7 +212,7 @@ You can mix SVG and Canvas to get the best of both worlds. For instance, the Was
 [45]:	http://learnjsdata.com/index.html
 [46]:	https://eloquentjavascript.net/
 
-[image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/casing.png
+[image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/shootings.png?v0
 [image-2]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/virus.png
 [image-3]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/migration.png
 [image-4]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/heat-index.png
