@@ -32,7 +32,11 @@ Try clicking the button. What happens?
 
 We already covered “enter” phase of the data join. There are two more: “update” for nodes that already entered but are sticking around and may have new values, and “exit” for nodes that are leaving the DOM. Here’s a diagram to illustrate what each of these are doing:
 
-Right now, we’ve only implemented code for the “enter” phase, so nothing happens when our data updates. Fortunately, there is an easy shorthand way to handle all the phases of the join. We’ve mentioned it before: `.join()`. 
+![Diagram of D3 data join](img/data-join.png)
+
+As they say, if anything on this graphic causes confusion, ignore the entire product. For another approach to explaining data joins, I recommend reading [this Observable notebook by Mike Bostock](https://observablehq.com/@d3/selection-join).
+
+Right now, we’ve only implemented code for the “enter” phase, so nothing happens when our data updates. Fortunately, there is an easy shorthand way to handle all the phases of the join. We’ve mentioned it before: `.join()`.
 
 Replace your `.enter().append('rect')` code with `.join('rect')`. Do the same for `.enter().append('text')`, replacing it with `.join('text')`.
 
@@ -62,7 +66,7 @@ The issue is that D3 isn’t smart enough to know that we have a new country in 
 	let bars = svg.selectAll('rect')
 	    .data(data, d => d.name)
 
-Now, D3 will check the `name` of each country in our existing data to see if the incoming data has any new countries. Any countries that don’t exist in the new data will get `.remove()`d. 
+Now, D3 will check the `name` of each country in our existing data to see if the incoming data has any new countries. Any countries that don’t exist in the new data will get `.remove()`d.
 
 Note that those other `.attr()` calls after `.join()` can stay right where they are, so long as we want the same code to run on the “enter” and “update” phase. However, code that only has to run once when the element is first appended can get attached to `enter`. Try updating your code as follows:
 
@@ -146,7 +150,7 @@ Transitions have a [`.duration()` method][2] that takes as an argument an number
 
 `const DURATION = 1000`
 
-Transitions also have an [`.ease()` method][3] that takes an easing function. These easing functions are documented in [the `d3-ease` module][4]. Transitions default to `d3.easeCubic`. Another useful easing function is `d3.easeLinear` for motion at a constant rate. A particularly fun one is `d3.easeElasticOut` – it make your transition feel bouncy. 
+Transitions also have an [`.ease()` method][3] that takes an easing function. These easing functions are documented in [the `d3-ease` module][4]. Transitions default to `d3.easeCubic`. Another useful easing function is `d3.easeLinear` for motion at a constant rate. A particularly fun one is `d3.easeElasticOut` – it make your transition feel bouncy.
 
 Let’s try some now, modifying the bars `.transition()` after your `.join()`.
 
@@ -175,7 +179,7 @@ You may be asking, “what’s with this `<button>` nonsense?” After all, the 
 
 The upshot of this is not that we don’t do anything interactive anymore, but rather that the interactions we design should be genuinely enriching to the reader’s experience. And if we do have something we want to show the reader, we should just show it to them rather than waiting on them to interact.
 
-So instead of making the reader click a button, lets just have the graphic automatically advance. To do this, we can use [`d3-timer`][6]. 
+So instead of making the reader click a button, lets just have the graphic automatically advance. To do this, we can use [`d3-timer`][6].
 
 	d3.csv('../../data/oecd.csv')
 	  .then(sculptData)
@@ -209,7 +213,7 @@ Now our chart is as wide as our screen, which looks kind of ridiculous. Let’s 
 	  margin: 0 auto;
 	}
 
-Let’s see what it looks like on a phone. In your developer tools click the second button from the top left to enable device toolbar mode. 
+Let’s see what it looks like on a phone. In your developer tools click the second button from the top left to enable device toolbar mode.
 
 Now it looks good when you first load the page, but what happens if the screen size changes? Let’s write a function to take care of this:
 
