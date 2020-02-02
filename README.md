@@ -28,6 +28,7 @@ Instructors: [Darla Cameron](https://www.texastribune.org/about/staff/darla-came
 
 #### When should you use D3?
 - In our newsrooms, we try to limit D3 usage to when we need to be extra creative with visualization shape, do fancy transitions or update a graphic regularly. For example:
+	- ![Screengrab of shootins tracker][image-1]
 	- The Washington Post's [police shootings database](https://www.washingtonpost.com/graphics/investigations/police-shootings-database/), which includes lots of dynamic charts and updates annually.
 	- The Washington Post's [coronavirus tracker](https://www.washingtonpost.com/world/2020/01/22/mapping-spread-new-coronavirus/?arc404=true), a dynamic map which was updated multiple times per day during the outbreak.
 	- The Texas Tribune's [migration tracker](https://apps.texastribune.org/features/2019/migrant-texas-border-trump-policies/), which updates monthly and has dynamic charts. 
@@ -141,4 +142,7 @@ d3 is pretty great for mapping — most newsrooms use d3 + canvas for their elec
 - [Free Code Camp](https://www.freecodecamp.org/learn/) 
 - [Learn JS Data](http://learnjsdata.com/index.html)
 - [Eloquent Javascript](https://eloquentjavascript.net/) 
+
+
+[image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/shootings.png
 
