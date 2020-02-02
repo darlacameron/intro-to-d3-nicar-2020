@@ -49,8 +49,6 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 - In a browser, go to `http://localhost:8080/` to view the class files.
 - We'll leave this server running all though class.
 
-----
-
 ## Next steps: How to put what you learned today into action
 Here's things that we have learned along the way that are worth considering as you start making graphics with d3.
 
@@ -199,7 +197,7 @@ You can mix SVG and Canvas to get the best of both worlds. For instance, the Was
 [32]:	https://github.com/d3/d3-geo-projection/
 [33]:	https://github.com/topojson/topojson
 [34]:	https://mapshaper.org/
-[35]:	[https://developer.mozilla.org/en-US/docs/Web/API/Canvas%5C_API]
+[35]:	https://developer.mozilla.org/en-US/docs/Web/API/Canvas%5C_API
 [36]:	https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect
 [37]:	https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc
 [38]:	https://github.com/d3/d3-shape
