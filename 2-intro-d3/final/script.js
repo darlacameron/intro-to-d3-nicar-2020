@@ -7,42 +7,27 @@ let svg = chartContainer
     .attr('width', width)
     .attr('height', height)
 
-let snowBody = svg.append('g')
-  .attr('fill', 'white')
-  .attr('stroke', 'black')
+svg.append('text')
+  .attr('x', width / 2)
+  .attr('y', 50)
+  .attr('text-anchor', 'middle')
+  .style('font-size', '40px')
+  .style('font-family', 'sans-serif')
+  .style('font-weight', 'bold')
+  .text('NICAR 2020!')
 
-let circles = [
-  {'r': 60, 'cx': 150, 'cy': 230},
-  {'r': 40, 'cx': 150, 'cy': 150},
-  {'r': 30, 'cx': 150, 'cy': 90}
+let hotel = svg.append('g')
+
+let hotelRects = [
+  {width: 270, height: 70, x: 100, y: 330},
+  {width: 70, height: 150, x: 150, y: 250},
+  {width: 70, height: 300, x: 300, y: 100}
 ]
 
-snowBody.selectAll('circle')
-  .data(circles)
-  .enter().append('circle')
-  .attr('r', d => d.r)
-  .attr('cx', d => d.cx)
-  .attr('cy', d => d.cy)
-
-svg.append('ellipse')
-  .attr('rx', 3)
-  .attr('ry', 5)
-  .attr('cx', 140)
-  .attr('cy', 80)
-
-svg.append('ellipse')
-  .attr('rx', 3)
-  .attr('ry', 5)
-  .attr('cx', 160)
-  .attr('cy', 80)
-
-svg.append('path')
-  .attr('d', `M 150,90
-              L 170,95
-              L 150,100 z`)
-
-svg.append('text')
-  .attr('x', 150)
-  .attr('y', 40)
-  .attr('text-anchor', 'middle')
-  .text('Hello, world!')
+hotel.selectAll('rect')
+  .data(hotelRects)
+  .enter().append('rect')
+  .attr('width', d => d.width)
+  .attr('height', d => d.height)
+  .attr('x', d => d.x)
+  .attr('y', d => d.y)

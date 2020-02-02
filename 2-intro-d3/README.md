@@ -67,68 +67,70 @@ Refresh your browser and look in the Elements tab of the devtools to check if th
 ### Exercise
 Using the `.append()` and `.attr()` functions, recreate the SVG you wrote by hand in exercise 1, but this time entirely in JavaScript. Write this code in `script.js`. Delete everything from that file except for the `svg` that you just added.
 ---- 
-When you were writing code to draw the circles, did it feel like you were repeating yourself? It’s a good instinct to have when you are coding — perhaps the code you just wrote could be streamlined by writing parts of it in a for loop. We could do that, but d3 has a better way. It involves attaching data to your selection.
+When you were writing code to draw the rects, did it feel like you were repeating yourself? It’s a good instinct to have when you are coding — perhaps the code you just wrote could be streamlined by writing parts of it in a for loop. We could do that, but d3 has a better way. It involves attaching data to your selection.
 
-Let’s write an array containing data specifying the size and location of the snow person’s  circles:
+Let’s write an array containing data specifying the size and location of the \<rect\>s making up your hotel. This is just an example, use the values you actually chose in your SVG:
 
-	let snowData = [
-	  {'r': 60, 'cx': 150, 'cy': 230},
-	  {'r': 40, 'cx': 150, 'cy': 150},
-	  {'r': 30, 'cx': 150, 'cy': 90}
+	let hotelData = [
+	  {width: 270, height: 70, x: 100, y: 330},
+	  {width: 70, height: 150, x: 150, y: 250},
+	  {width: 70, height: 300, x: 300, y: 100}
 	]
 
 Now we will attach this data to a selection using `.selectAll()` which is a version of `.select()` that works with multiple elements. In `script.js` write the following:
 
-	let circleSelection = d3.selectAll('circle')
+	let rectSelection = d3.selectAll('rect')
 
-Now wait a minute! There aren’t any `<circle>`s in the DOM to select. It’s empty. Think of it as a placeholder. We can attach the data using the Selection’s [`.data()` function][3]:
+Now wait a minute! There aren’t any `<rect>`s in the DOM to select. It’s empty. Think of it as a placeholder. We can attach the data using the Selection’s [`.data()` function][3]:
 
-	let circleSelectionWithData = circleSelection.data(snowData)
+	let rectelectionWithData = rectSelection.data(hotelData)
 
-Now `circleSelectionWithData` is a special kind of Selection with some extra functions that will help us update the DOM. The one we will use for now is `.enter()`.
+Now `rectSelectionWithData` is a special kind of Selection with some extra functions that will help us update the DOM. The one we will use for now is `.enter()`.
 
-	let circleEnterSelection = circleSelectionWithData.enter()
+	let rectEnterSelection = rectSelectionWithData.enter()
 
-This gives a special selection, one that represents only nodes that are “entering” the DOM, that is, elements representing entries in the array passed to `.data()` that don’t already exist in the DOM. Since there weren’t any circles in the DOM already, that means we have a node for every element in `snowData`. Now let’s draw some circles with the familiar `.append()` function.
+This gives a special selection, one that represents only nodes that are “entering” the DOM, that is, elements representing entries in the array passed to `.data()` that don’t already exist in the DOM. Since there weren’t any rects in the DOM already, that means we have a node for every element in `hotelData`. Now let’s draw some rects with the familiar `.append()` function.
 
-	let circles = circleEnterSelection.append('circle')
-	// now we call the function to trigger it
-	circles
+	let rects = rectEnterSelection.append('rect')
 
-Nothing will show up yet, but if you look in your inspector, you should see some `<circle>`s inside your `<svg>`.
+Nothing will show up yet, but if you look in your inspector, you should see some `<rect>`s inside your `<svg>`.
 
 Did that seem like a lot of typing? We did that as an exercise to see the kind of Selection each different function returns. When we are writing this code in real life, we often choose to skip over storing the intermediate Selections in variables. Replace the code above with this:
 
-	let circles = svg.selectAll('circle')
-		.data(snowData)
+	let rects = svg.selectAll('rect')
+		.data(hotelData)
 		.enter()
-		.append('circle')
+		.append('rect')
 
 That’s a bit better. There’s an even more streamlined way to write this with `.join()` replacing `.enter().append()`:
 
-	let circles = svg.selectAll('circle')
-		.data(snowData)
-		.join('circle')
+	let rects = svg.selectAll('rect')
+		.data(hotelData)
+		.join('rect')
 
 For our purposes, this does the same thing. We will return to `.join()` in the future.
 
-To fill out the `<circle>` attributes we need, we can use `.attr()` with a twist: that second argument representing the value of the attribute can be a function rather than a literal. D3 will call this function for us and will pass in arguments with the datum (or entry in the data array) and index value. Try it:
+To fill out the `<rect>` attributes we need, we can use `.attr()` with a twist: that second argument representing the value of the attribute can be a function rather than a literal. D3 will call this function for us and will pass in arguments with the datum (or entry in the data array) and index value. Try it:
 
-	circles.attr('cx', function(datum, index) {
+	rects.attr('width', function(datum, index) {
 		console.log(datum, index);
-		return datum.cx
+		return datum.width
 	});
+
+This is what is know as an *accessor function*.
 
 This syntax can get cumbersome, so I like to use the arrow function shorthand for this, along with `d` and `i` as conventions instead of writing out `datum` and `index`:
 
-	circles.attr('cx', (d, i) => d.cx)
+	rects.attr('width', (d, i) => d.width)
 
 And if you don’t need the index it gets even shorter:
 
-	circles.attr('cx', d => d.cx)
+	rects.attr('width', d => d.width)
 
 #### Exercise
-Draw the snow person’s circles using the `.enter()` pattern described above. 
+
+Finish drawing the hotel using the `.enter()` pattern described above. 
+
 ---- 
 D3’s data joins are the trickiest, most counter-intuitive part to understand. Now that we have begun to practice them, let’s bring in some real data.
 
