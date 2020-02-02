@@ -13,7 +13,7 @@ To include d3.js, write the following line inside the `<body>` tag.
 The `../` tells the browser to look one directory up, because that’s where we’ve included the d3 files relative to `index.html` in this particular project.
 
 ---- 
-#### Pro tip: 
+#### Pro tip:
 > d3.js weighs in at 511kb, which is pretty hefty for a JavaScript library. Fortunately, the minified version `d3.min.js` is half the size. And if you are using a build system like Webpack, you may be able to cut the size down even further by only including the modules you actually use.
 ---- 
 
@@ -49,7 +49,9 @@ Check out the Element tab in your devtools to see what happened.
 
 That’s enough of the console for now. Let’s write some code in the repo. Create a new file called `script.js` in this folder and write the following:
 
-	let svg = d3.select('body')
+	let chartContainer = d3.select('div#chart')
+	
+	let svg = chartContainer
 	  .append('svg')
 	  .attr('width', 500)
 	  .attr('height', 300)

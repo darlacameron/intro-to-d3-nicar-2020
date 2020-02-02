@@ -33,7 +33,7 @@ We also need to use the `transform` attribute. This is a powerful tool which you
 
 Let’s append a `<g>` and translate it now:
 
-	let svg = d3.select('body')
+	let svg = chartContainer
 		.append('svg')
 		.attr('width', width + margin.left + margin.right)
 		.attr('height', height + margin.top + margin.bottom)

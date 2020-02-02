@@ -31,11 +31,7 @@ function sculptData(raw) {
     .key(function(d) { return d.name })
     .entries(data)
 
-  return dataYears['$1970']
-}
-
-function render(raw) {
-  let data = raw
+  let data = dataYears['$1970']
     .sort((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
     .slice(0, 10)
 
@@ -54,4 +50,3 @@ function render(raw) {
 
 d3.csv('../../data/oecd.csv')
   .then(sculptData)
-  .then(render)
