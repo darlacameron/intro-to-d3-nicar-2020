@@ -144,5 +144,5 @@ d3 is pretty great for mapping — most newsrooms use d3 + canvas for their elec
 - [Eloquent Javascript](https://eloquentjavascript.net/) 
 
 
-[image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/shootings.png
+[image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/shootings.png?v0
 
