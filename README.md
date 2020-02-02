@@ -29,10 +29,17 @@ Instructors: [Darla Cameron](https://www.texastribune.org/about/staff/darla-came
 #### When should you use D3?
 - In our newsrooms, we try to limit D3 usage to when we need to be extra creative with visualization shape, do fancy transitions or update a graphic regularly. For example:
 	- The Washington Post's [police shootings database](https://www.washingtonpost.com/graphics/investigations/police-shootings-database/), which includes lots of dynamic charts and updates annually.
-	![Screengrab of shootins tracker][image-1]
+	![Screengrab of shootings tracker][image-1]
+
 	- The Washington Post's [coronavirus tracker](https://www.washingtonpost.com/world/2020/01/22/mapping-spread-new-coronavirus/?arc404=true), a dynamic map which was updated multiple times per day during the outbreak.
+	![coronoavirus tracker][image-2]
+
 	- The Texas Tribune's [migration tracker](https://apps.texastribune.org/features/2019/migrant-texas-border-trump-policies/), which updates monthly and has dynamic charts. 
+	![migration tracker][image-3]
+
 	- The Texas Tribune's [political district competitiveness index](https://apps.texastribune.org/features/2019/texas-turn-blue-voting-pattern-history/), where charts form an interactive narrative.
+	![heat index][image-4]
+
 - If you want to make a basic chart or map for the web that *doesn’t* need to be interactive, be republished regularly or use a crazy shape, we highly recommend good ol’ Adobe Illustrator + [ai2html](http://ai2html.org/) or [Datawrapper](https://www.datawrapper.de/)
 
 #### Time to code! Let's fire up a server.
@@ -145,4 +152,6 @@ d3 is pretty great for mapping — most newsrooms use d3 + canvas for their elec
 
 
 [image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/shootings.png?v0
-
+[image-2]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/virus.png
+[image-3]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/migration.png
+[image-4]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/heat-index.png
