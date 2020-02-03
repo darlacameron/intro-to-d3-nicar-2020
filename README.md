@@ -11,13 +11,13 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 #### What we're going to learn today
 - What do **you** want to learn? We'll do our best to address your specific questions along the way.
 	- Have any of you tried to learn D3 and gotten stuck?
-	- What did you find challening about learning D3?
+	- What did you find challenging about learning D3?
 - We hope you leave here today:
 	- Knowing basic D3 terminology and concepts
 	- With a foundation for getting yourself un-stuck when you inevitably run into something that doesn't work as expected.
 - We will have you work through each of the exercises in this repository in pairs. Introduce yourself to your neighbor!
 - Here's how **pair programming** works:
-	- One person types the code and the other has documentation open, telling the typer what to do next.
+	- One person types the code and the other has documentation open, telling the typist what to do next.
 	- Why pair program? Most errors are typos, and this saves you from swapping between documentation and the code.
 - We have 3 hours and 30 minutes together, and we'll take a bathroom break in the middle of the session. Feel free to get up and stretch whenever you need to.
 
@@ -54,7 +54,7 @@ Here's things that we have learned along the way that are worth considering as y
 
 ### Graphic technology decision making process
 
-The first step when we take on a new project is deciding what technology to use. This process can vary a bit depending on your team size, project scope and deadline (Darla's team has just four people, but John's team has close to 30!). Here's a list of publication options from simple to complex to help you figure out what to develop.
+The first step when we take on a new project is deciding what technology to use. This process can vary a bit depending on your team size, project scope and deadline (Darla’s team has just four people, but John’s team has close to 30!). Here’s a list of publication options from simple to complex to help you figure out what to develop.
 
 Any of the following may be the right choice for you depending on your CMS, development skills and what serves the story best. BUT they can all make use of D3!
 
@@ -83,13 +83,13 @@ Any of the following may be the right choice for you depending on your CMS, deve
 
 #### How to actually get d3 code on your website
 - Custom static pages outside your CMS
-	- Most complex, interactive graphics will not fit nicely into your news organization's CMS. At the Post and the Trib, we publish directly to Amazon s3 buckets as a workaround. Yes, it's a lot of work to make sure our code and tracking tags sync up with the main site, but it's worth it to have a sandbox where we can experiment.
+	- Most complex, interactive graphics will not fit nicely into your news organization’s CMS. At the Post and the Trib, we publish directly to Amazon S3 buckets as a workaround. Yes, it’s a lot of work to make sure our code and tracking tags sync up with the main site, but it’s worth it to have a sandbox where we can experiment.
 	- It's also very important to know that we never write code from scratch — every project that our teams produce starts with a build environment that has a server, file compression, links to Google docs, deploy tools and more built in automatically.
-	- Both the Post and the Tribune work in kits that are written in Node.js, and the [Tribune's kit][14] is open source and free for anyone to use. We highly encourage you to use something like this as a base for your work.
-	- Both kits take advantage of [Archie Markup Language][15], a wonderful open-source tool from the NYT's graphics team that renders google docs in graphics.
+	- Both the Post and the Tribune work in kits that are written in Node.js, and the [Tribune’s kit][14] is open source and free for anyone to use. We highly encourage you to use something like this as a base for your work.
+	- Both kits take advantage of [Archie Markup Language][15], a wonderful open-source tool from the NYT’s graphics team that creates JSON data from a minimal syntax that is friendly for non-technical folks and hard for your copy editors to break accidentally.
 - Embeds
-	- Sometimes graphics do need to be embedded into the cms for context with a story — that's when iframes come in. The Trib's kit allows for the development of embedded graphics with help from a variation on iframes called [frames][16], which is responsive and works great with Google's AMP instant articles (this will make your product and engineering friends happy).
-	- Your ability to embed raw html inside of your CMS will vary greatly depend on where you work. About 7 to 8 years ago, it was a common workflow. Generally, d3 requires so many plugins and data files that it's hard to pull off.
+	- Sometimes graphics do need to be embedded into the CMS for context with a story — that's where iframes come in. The Trib’s kit allows for the development of embedded graphics with help from a variation on iframes called [frames][16], which is responsive and works great with Google's AMP instant articles (this will make your product and engineering friends happy).
+	- Your ability to embed raw html inside of your CMS will vary greatly depend on where you work. About 7 to 8 years ago, it was a common workflow. Generally, D3 requires so many plugins and data files that it's hard to pull off.
 
 #### How to make your graphics editor happy
 - Refine your writing
@@ -121,17 +121,18 @@ Internet Explorer [did not support SVG until version 9][20], and lots of Washing
 Some of the newer features we use in this workshop don’t work in older browsers. [Promises][21], [Arrow functions][22] and [Template literals][23] work in all modern browsers, but not IE11. If you want to use these features in older browsers you’ll need to provide [polyfills][24] for them. D3 version five [only supports modern browsers][25] and if you need to support older ones you’ll have to use older versions of the library or individual modules.
 
 #### Beware of old d3 examples with previous APIs older than v4
-- D3 was first released in 2012, and it's now on version 5! For security reasons, we recommend using the latest and greatest version. The last few [changes][26] have changed the code's structure in big ways, and examples before v4 will not work with the current versions. As you're googling around to solve a bug, keep an eye out for old examples and avoid them.
 
-#### [Observable][27]
-- Mike Bostock is all in on his cool new tool for writing code. You'll see lots of newer d3 examples in this format.
-- It's a cool tool, and we use it at WaPo a lot.
-- Great development experience. you can start coding right away, imports and versioning work very naturally. Good way to experiment with data and see what it tells you.
-- But! It is hard to translate your code into the “real world.” It looks a lot like JavaScript but it has a lot of nonstandard stuff mixed in.
+D3 was first released in 2012, and it's now on version 5! For security reasons, we recommend using the latest and greatest version. The last few [changes][26] have changed the code's structure in big ways, and examples before v4 will not work with the current versions. As you're googling around to solve a bug, keep an eye out for old examples and avoid them.
+
+#### Observable notebooks
+
+Mike Bostock is all in on [his cool new tool][27] for writing code. You'll see lots of newer d3 examples in this format. It's a cool tool, and we use it the Post a lot. Great development experience. you can start coding right away, imports and versioning work very naturally. It is a good way to experiment with data and see what it tells you, but it's hard to translate your code into the “real world.” It looks a lot like JavaScript but it has a lot of nonstandard stuff mixed in.
 
 #### Scrollytelling
-- Scrolling is a native behavior on the web. Unlike clicking filter buttons or hovering for a tooltip, we know that readers know how to get information this way. Thus, you see fancy scrolling techniques implemented in A LOT in graphics. [The Pudding][28] does scrollytelling especially well, if you need inspiration.
-- Ryan Murphy wrote a handy little [scroller][29] library that we highly recommend if you want a lightweight implementation.
+
+Scrolling is a native behavior on the web. Unlike clicking filter buttons or hovering for a tooltip, we know that readers know how to get information this way. Thus, you see fancy scrolling techniques implemented in A LOT in graphics. [The Pudding][28] does scrollytelling especially well, if you need inspiration.
+
+Ryan Murphy wrote a handy little [scroller][29] library that we highly recommend if you want a lightweight implementation.
 
 #### Maps
 d3 is pretty great for mapping — most newsrooms use d3 + canvas for their election results maps, for instance. But, without a bit of background knowledge in cartography and GIS, there can be a steep learning curve.

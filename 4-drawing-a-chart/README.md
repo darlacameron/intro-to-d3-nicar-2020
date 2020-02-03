@@ -4,6 +4,14 @@ What we’ve done so far is cool, but it’s not a chart yet. Our visual is mean
 
 If your chart from step 3 is caught up with the example in `3-sculpting-data/final`, then great! You can keep working in the file from step 3. If you're a bit behind, no worries. In your text editor, open up `3-sculpting-data/final/chart.js` and start with that file.
 
+Our chart needs a hed and a line explaining where the data comes from. Lets add this in `index.html`:
+
+	<div id="chart-wrapper">
+		<h2>Health spending in 1970</h2>
+		<div id="chart"></div>
+		<p class="source">Source: Organisation for Economic Co-operation and Development</p>
+	</div>
+
 ## Margin convention
 
 First of all, we need to a make some space for axes. You can do this in many ways, but there is one so common we refer to it here as the [Margin Convention][1].
@@ -94,7 +102,7 @@ While we are at it, lets make the tick labels a bit larger and the ticks themsel
 	.axis text {
 		font-size: 14px;
 	}
-	
+
 	.axis line {
 		stroke: #bbb;
 	}

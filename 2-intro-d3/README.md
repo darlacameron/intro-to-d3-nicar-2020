@@ -23,7 +23,7 @@ The d3-selection module is included in d3 by default. So if d3 is loaded properl
 
 If things are working properly, you’ll see an object. If you click on it you’ll see a long list of functions. This is the d3 API! It looks overwhelming, but don’t worry, we’ll focus on learning the most important functions today.
 
-The first function in the API we will use is `select()`. [docs][2] Type the following in the console:
+The first function in the API we will use is [`select()`[2]. Type the following in the console:
 
 	d3.select('body')
 
@@ -62,15 +62,15 @@ A neat thing that streamlines our D3 code is that both `.append()` and `.attr()`
 
 	<script src="script.js"></script>
 
-Refresh your browser and look in the Elements tab of the devtools to check if the `<svg>` is there. Note that the script tag with your code needs to go after the d3 tag because it is expecting that d3 is already loaded on the page.
+Refresh your browser and look in the Elements tab of your developer tools to check if the `<svg>` is there. Note that the script tag with your code needs to go after the d3 tag because it is expecting that d3 is already loaded on the page.
 
 ### Exercise
 
 Using the `.append()` and `.attr()` functions, recreate the SVG you wrote by hand in exercise 1, but this time entirely in JavaScript. Write this code in `script.js`. Delete everything from that file except for the `svg` that you just added.
 
----- 
+----
 
-When you were writing code to draw the rects, did it feel like you were repeating yourself? It’s a good instinct to have when you are coding — perhaps the code you just wrote could be streamlined by writing parts of it in a for loop. We could do that, but d3 has a better way. It involves attaching data to your selection.
+When you were writing code to draw the rects, did it feel like you were repeating yourself? It’s a good instinct to have when you are coding — perhaps the code you just wrote could be streamlined by writing parts of it in a for loop. We could do that, but D3 has a better way. It involves attaching data to your selection.
 
 Let’s write an array containing data specifying the size and location of the \<rect\>s making up your hotel. This is just an example, use the values you actually chose in your SVG:
 
@@ -86,7 +86,7 @@ Now we will attach this data to a selection using `.selectAll()` which is a vers
 
 Now wait a minute! There aren’t any `<rect>`s in the DOM to select. It’s empty. Think of it as a placeholder. We can attach the data using the Selection’s [`.data()` function][3]:
 
-	let rectelectionWithData = rectSelection.data(hotelData)
+	let rectSelectionWithData = rectSelection.data(hotelData)
 
 Now `rectSelectionWithData` is a special kind of Selection with some extra functions that will help us update the DOM. The one we will use for now is `.enter()`.
 

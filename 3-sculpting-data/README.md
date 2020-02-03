@@ -1,6 +1,6 @@
 # Sculpting data
 
-As data journalists, we have to work with data in a variety of shapes: tidy and wide, flat and nested. When we are working with d3, however, the best shape for our data is one that matches the structure of the document we are creating with it. Fortunately, JavaScript and d3 come with some good tools for re-shaping our data.
+As data journalists, we have to work with data in a variety of shapes: tidy and wide, flat and nested. When we are working with D3, however, the best shape for our data is one that matches the structure of the document we are creating with it. Fortunately, JavaScript and d3 come with some good tools for re-shaping our data.
 
 But first, let’s use d3 to load some real data into the browser. The functions we are using are in the `d3-fetch` module.
 
@@ -78,10 +78,10 @@ Let’s also group by countries, this time using `.entries()`:
 	    .key(d => d.name)
 	    .entries(data)
 
----- 
+----
 #### Nerd note:
 > Mike Bostock has indicated that `d3.nest()` is deprecated. In d3 version 6.0, there will be a new `d3-array` method [`d3.group()`][6]. To be honest, `d3.group()` looks a bit more straightforward than `d3.nest()` but some of us grew up with and will always be nostalgic for `d3.nest()`. You won’t have to switch over to 6.0 as soon as it comes out, but it is good to know that this is on the horizon.
----- 
+----
 
 We’ll finish the `sculptData` function by returning `dataYears`:
 
@@ -93,7 +93,7 @@ Before we get started with scales, lets set up the function that will ultimately
 	  // get the 10 countries with highest per capita spending in 1970
 	  let data = raw[1970]
 	    .slice(0, 10)
-	  
+
 	  // we already wrote this, now it will come in handy
 	  let maxValue = d3.max(data, d => +d.healthExpPerCapita)
 	}
@@ -105,7 +105,7 @@ and call it after `sculptData`, in a data pipeline of sorts:
 	  .then(render)
 
 ## Scales
-Now that our data is in shape, we can get rady to make a chart. But first, we need to do one more kind of data transformation. We need to translate values from our data range into the pixel space available in the SVG. The [`d3-scale` module][7] provides methods for doing this. There are a ton of scales provided, but we’ll focus on just a few today.
+Now that our data is in shape, we can get ready to make a chart. But first, we need to do one more kind of data transformation. We need to translate values from our data range into the pixel space available in the SVG. The [`d3-scale` module][7] provides methods for doing this. There are a ton of scales provided, but we’ll focus on just a few today.
 
 Let’s try `.scaleLinear()` to make an x axis scale for our chart. Write the following code near the top of `script.js`, outside of `sculptData()`:
 
@@ -143,7 +143,7 @@ Using the data join we learned in step 2, and the data we loaded as well as the 
 
 
 [1]:	https://github.com/d3/d3-fetch
-[2]:	[https://github.com/d3/d3-fetch#csv
+[2]:	https://github.com/d3/d3-fetch#csv
 [3]:	https://github.com/d3/d3-array
 [4]:	https://github.com/d3/d3-collection#nests
 [5]:	/mister-nester/
