@@ -7,6 +7,7 @@ D3 requires JavaScript, and we asked NICAR to make it a prerequisite for this cl
 
 
 1. [Arrow functions][4] are a shorter way of writing repeatable blocks of code.
+
 ```javascript
 let sandwiches = [
   'PoBoy',
@@ -62,7 +63,8 @@ let svg = d3.select('body')
 ```
 
 3. [Promises][6] are a way to load files that you need, such as JSON, more efficiently. Behind the scenes, functions like `d3.csv()` secretly use promises.  
-	\`\`\`javascript
+
+```javascript
 let myFirstPromise = new Promise((resolve, reject) =\> {
   // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
   // In this example, we use setTimeout(...) to simulate async code.
@@ -140,7 +142,7 @@ There are three ways to change the appearance of shapes in an SVG, and we've use
 > Adobe Illustrator reads SVGs, and the New York Times graphics team made a great Chrome plugin called [SVG Crowbar][9] that makes it easy to export an SVG from a webpage and open it in Illustrator. A workflow that we like is drawing a crazy shape in D3, Crowbar'ing it out of the browser, editing in Illustrator and publishing with [ai2html][10], another free tool from NYT graphics. Here's [an example][11] from Darla's days at the Post.
 ----
 
-### Next, we'll start using D3!
+Next, we'll start using D3!
 
 
 
