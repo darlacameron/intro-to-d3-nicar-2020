@@ -135,7 +135,7 @@ There are three ways to change the appearance of shapes in an SVG, and we've use
 ### Exercise
 - Use at least three `<rect>`s to draw a profile of the [conference hotel][8].
 
-![New Orleans Mariott](https://cache.marriott.com/marriottassets/marriott/MSYLA/msyla-exterior-0175-hor-clsc.jpg)
+![New Orleans Mariott](https://cache.marriott.com/marriottassets/marriott/MSYLA/msyla-exterior-0175-hor-clsc.jpg?downsize=800px:*)
 
 ----
 #### Pro tip:
