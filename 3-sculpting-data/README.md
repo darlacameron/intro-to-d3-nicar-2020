@@ -11,9 +11,9 @@ Let’s get started by navigating to `localhost:8080/3-sculpting-data/` in your 
 The data we are trying to load is CSV-formatted. It's located in the `data` folder for the class. To load and parse it into useful data, we can use [`d3.csv()`][2].
 
 	d3.csv('../data/oecd.csv')
-		.then(data => {
-			console.log('Data is ready:', data);
-		})
+	  .then(data => {
+	    console.log('Data is ready:', data);
+	  })
 
 `d3.csv()` returns a Promise which loads and parses our data. The function we pass to `.then()` will be called when our data is ready to use.
 
@@ -22,20 +22,20 @@ Now we have data. Use the console to examine the structure of one entry in the a
 We are about to write some code to process our data. This only has to happen once and can be decoupled from our chart code, so lets write a function to do this:
 
 	let sculptData = (raw) => {
-		/* write data processing code in here */
-		console.log('sculpt this data:', raw)
+	  /* write data processing code in here */
+	  console.log('sculpt this data:', raw)
 	}
 
 Call this function when our CSV promise returns:
 
 	d3.csv('../data/oecd.csv')
-		.then(sculptData)
+	  .then(sculptData)
 
 Inside the `sculptData` function, lets use `.map()` to transform the type of one of those variables
 
 	data = raw.map(d => {
-		d.healthExpPerCapita = +d.healthExpPerCapita
-		return d
+	  d.healthExpPerCapita = +d.healthExpPerCapita
+	  return d
 	})
 
 and `.filter()` to limit the data to just one country
@@ -67,16 +67,16 @@ Nest always start with `d3.nest()`. Then we define our groupings with `.key(acce
 
 Once you’ve spent some time playing with that, write the following inside `sculptData()`:
 
-	  let dataYears = d3.nest()
-	    .key(d => d.year)
-	    .sortValues((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
-	    .object(data)
+  let dataYears = d3.nest()
+    .key(d => d.year)
+    .sortValues((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
+    .object(data)
 
 Let’s also group by countries, this time using `.entries()`:
 
-	  let dataCountries = d3.nest()
-	    .key(d => d.name)
-	    .entries(data)
+  let dataCountries = d3.nest()
+    .key(d => d.name)
+    .entries(data)
 
 ----
 #### Nerd note:
