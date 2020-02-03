@@ -43,7 +43,7 @@ Now we have a stored a Selection representing an `<svg>` in a variable. Let's mo
 You can pass anything you want to the `.append()` and `.attr()` functions. Try it!
 
 	svg.append('notarealtag')
-		.attr('madeupattr', 'lol')
+	  .attr('madeupattr', 'lol')
 
 Check out the Element tab in your devtools to see what happened.
 
@@ -101,23 +101,23 @@ Nothing will show up yet, but if you look in your inspector, you should see some
 Did that seem like a lot of typing? We did that as an exercise to see the kind of Selection each different function returns. When we are writing this code in real life, we often choose to skip over storing the intermediate Selections in variables. Replace the code above with this:
 
 	let rects = svg.selectAll('rect')
-		.data(hotelData)
-		.enter()
-		.append('rect')
+	  .data(hotelData)
+	  .enter()
+	  .append('rect')
 
 That’s a bit better. There’s an even more streamlined way to write this with `.join()` replacing `.enter().append()`:
 
 	let rects = svg.selectAll('rect')
-		.data(hotelData)
-		.join('rect')
+	  .data(hotelData)
+	  .join('rect')
 
 For our purposes, this does the same thing. We will return to `.join()` in the future.
 
 To fill out the `<rect>` attributes we need, we can use `.attr()` with a twist: that second argument representing the value of the attribute can be a function rather than a literal. D3 will call this function for us and will pass in arguments with the datum (or entry in the data array) and index value. Try it:
 
 	rects.attr('width', function(datum, index) {
-		console.log(datum, index);
-		return datum.width
+	  console.log(datum, index);
+	  return datum.width
 	});
 
 This is what is know as an *accessor function*.
