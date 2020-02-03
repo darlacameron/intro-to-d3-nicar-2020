@@ -18,14 +18,14 @@ svg.append('text')
 
 let hotel = svg.append('g')
 
-let hotelRects = [
+let hotelData = [
   {width: 270, height: 70, x: 100, y: 330},
   {width: 70, height: 150, x: 150, y: 250},
   {width: 70, height: 300, x: 300, y: 100}
 ]
 
 hotel.selectAll('rect')
-  .data(hotelRects)
+  .data(hotelData)
   .enter().append('rect')
   .attr('width', d => d.width)
   .attr('height', d => d.height)

@@ -20,12 +20,13 @@ Now to add some interactivity. D3 selections have a `.on('event', callback)` met
 	  .then(sculptData)
 	  .then(dataYears => {
 	    let year = 1970;
-	    d3.select('button').on('click', () => {
-	      render(dataYears[++year])
-		  // loop back to 1970 after 2015
-	      if (year === 2015) year = 1970;
-	    })
-	    render(dataYears[year])
+			let renderNextYear = () => {
+	      yearLabel.text(year)
+	      render(dataYears[year])
+	      if (++year > 2015) year = 1970;
+	    }
+	    d3.select('button').on('click', renderNextYear)
+	    renderNextYear();
 	  })
 
 Try clicking the button. What happens?
@@ -47,18 +48,18 @@ Now what happens when you click the button?
 This is just a shorthand way to write the function. If we are happy with the way d3 handles the update and exit phases, then we are set. But sometimes we want more control. `.join()` can also take three functions as arguments:
 
 	.join(
-		enter => enter,
-		update => update,
-		exit => exit
+	  enter => enter,
+	  update => update,
+	  exit => exit
 	)
 
 Now, if you want something to happen only on the update phase, we can make that happen. To illustrate, lets color the newly entered `<rect>`s different from the updated `<rect>`s. Replace `.join('rect')` with the following:
 
 	.join(
-	      enter => enter.append('rect')
-	        .attr('fill', 'teal'),
-	      update => update.attr('fill', 'silver'),
-	      exit => exit.remove()
+	  enter => enter.append('rect')
+	    .attr('fill', 'teal'),
+	  update => update.attr('fill', 'silver'),
+	  exit => exit.remove()
 	)
 
 What happens when we click the button now? Notice how Denmark appears on the chart. Since this is a new `<rect>` we would expect it to be salmon-colored. But instead all the rects are papayawhip, as if they were all already there before.
@@ -66,24 +67,24 @@ What happens when we click the button now? Notice how Denmark appears on the cha
 The issue is that D3 isn’t smart enough to know that we have a new country in our chart. We have to tell D3 that we care about tracking the countries in our join. To do this, we can pass an accessor function to `.data()`:
 
 	let bars = svg.selectAll('rect')
-	    .data(data, d => d.name)
+	  .data(data, d => d.name)
 
 Now, D3 will check the `name` of each country in our existing data to see if the incoming data has any new countries. Any countries that don’t exist in the new data will get `.remove()`d.
 
 Note that those other `.attr()` calls after `.join()` can stay right where they are, so long as we want the same code to run on the “enter” and “update” phase. However, code that only has to run once when the element is first appended can get attached to `enter`. Try updating your code as follows:
 
 	let bars = svg.selectAll('rect')
-	    .data(data, d => d.name)
-	    .join(
-	      enter => enter.append('rect')
-	        .attr('height', scaleY.bandwidth())
-	        .attr('x', 0)
-			.attr('fill', 'teal'),
-	      update => update.attr('fill', 'silver'),
-	      exit => exit.remove()
-	    )
-	    .attr('width', d => scaleX(+d.healthExpPerCapita))
-	    .attr('y', (d, i) => scaleY(i))
+	  .data(data, d => d.name)
+	  .join(
+	    enter => enter.append('rect')
+	      .attr('height', scaleY.bandwidth())
+	      .attr('x', 0)
+	      .attr('fill', 'teal'),
+	    update => update.attr('fill', 'silver'),
+	    exit => exit.remove()
+	  )
+	  .attr('width', d => scaleX(+d.healthExpPerCapita))
+	  .attr('y', (d, i) => scaleY(i))
 
 ## Transitions
 
@@ -113,34 +114,34 @@ We can take advantage of `.join()` to create a customized “enter” transition
 	    .join(
 	      enter => enter.append('rect')
 	        .attr('height', scaleY.bandwidth())
-			.attr('width', d => scaleX(+d.healthExpPerCapita))
+	        .attr('width', d => scaleX(+d.healthExpPerCapita))
 	        .attr('x', 0)
 	        .attr('y', (d, i) => scaleY(i))
-			.attr('transform', 'translate(-50, 0)')
+	        .attr('transform', 'translate(-50, 0)')
 	        .attr('opacity', 0)
-			.attr('fill', 'teal'),
+	        .attr('fill', 'teal'),
 	      update => update,
 	      exit => exit.remove()
 	    )
 	    .transition()
-		.attr('transform', 'translate(0, 0)')
+	    .attr('transform', 'translate(0, 0)')
 	    .attr('opacity', 1)
 	    .attr('width', d => scaleX(+d.healthExpPerCapita))
 	    .attr('y', (d, i) => scaleY(i))
 
 Updating the axis is similar:
 
-	  axisG
-	    .transition()
-	    .call(axis)
+	axisG
+	  .transition()
+	  .call(axis)
 
 One downside of `.join()` is that calling transitions inside it is a bit cumbersome. It looks like this:
 
 	exit => exit.call(exit => exit.transition()
-	        .attr('transform', 'translate(-50, 0)')
-	        .attr('fill', 'salmon')
-	        .style('opacity', 0)
-			.remove())
+	  .attr('transform', 'translate(-50, 0)')
+	  .attr('fill', 'salmon')
+	  .style('opacity', 0)
+	  .remove())
 
 Now the exiting `<rect>` will have a customized exit transition instead of suddenly disappearing.
 
