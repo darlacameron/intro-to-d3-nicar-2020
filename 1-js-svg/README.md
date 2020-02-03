@@ -1,7 +1,7 @@
 # JS + SVGs
 We'll start class by introducing a few useful advanced JavaScript functions, and move into SVGs.
 
-D3 requires JavaScript, and we asked NICAR to make it a prerequisite for this class. Here's why: it's relatively easy to duplicate one of the cool-looking [examples](https://github.com/d3/d3/wiki/Gallery) in D3's documentation. But without a working knowledge of how to manipulate data in JS, it's much harder to adapt those examples to your data. We won't cover JS basics here today, but if you need a refresher, the first section of the [2019 D3 class at NICAR](https://github.com/csessig86/intro-to-d3-nicar-19/tree/master/01-intro-to-js) is helpful. The free e-book [Eloquent Javascript](https://eloquentjavascript.net/) is also a great place to learn.
+D3 requires JavaScript, and we asked NICAR to make it a prerequisite for this class. Here's why: it's relatively easy to duplicate one of the cool-looking [examples](https://github.com/d3/d3/wiki/Gallery) in D3's documentation. But without a working knowledge of how to manipulate data in JS, it's much harder to adapt those examples to your data. We won't cover JS basics here today, but if you need a refresher, the first section of the [2019 D3 class at NICAR](https://github.com/csessig86/intro-to-d3-nicar-19/tree/master/01-intro-to-js) is helpful. The free e-book [Eloquent Javascript](https://eloquentjavascript.net/) is also a way place to learn.
 
 ## Four advanced JS concepts that are good to know for D3
 

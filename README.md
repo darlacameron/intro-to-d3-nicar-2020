@@ -96,7 +96,7 @@ Any of the following may be the right choice for you depending on your CMS, deve
 
 #### How to make your graphics editor happy
 - Refine your writing
-	- Yes, we make visuals, but clean and clear writing is so important for helping readers understand complex chart shapes. If you want to try something crazy, it has to support your story and you better be able to explain it to the last tech-savvy editor in the newsroom.
+	- Yes, we make visuals, but clean and clear writing is so important for helping readers understand complex chart shapes. If you want to try something crazy, it has to support your story and you better be able to explain it to the least tech-savvy editor in the newsroom.
 - Add clear headlines, notes and source lines
 	- The basics of chart-making always apply — leave no axis unlabeled! But all of the text around a graphic matters a lot. Be a good journalist and cite your sources — or even link directly to them. Your future self will thank you when you're trying to track down this data again.
 - Annotate all the things
