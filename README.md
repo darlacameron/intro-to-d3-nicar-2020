@@ -156,6 +156,8 @@ D3 feels more native when working with SVG, but a few parts of D3 can be used wi
 
 You can mix SVG and Canvas to get the best of both worlds. For instance, the Washington Post’s [database of school shootings][40] uses a canvas layer for animation and an SVG layer for axes, annotations and interaction. Another example is [this graphic][41] which shows how each county voted in the presidential elections from 2000-2012. The axes and labels are drawn in SVG while the lines for all the counties are in Canvas.
 
+![A graphic showing how each county voted in the presidential elections from 2000-2012](https://github.com/darlacameron/intro-to-d3-nicar-2020/blob/master/img/Feb-02-2020%2017-50-28.gif?raw=true)
+
 #### Some useful tutorials
 - [The 2019 version of this class][42]
 - [A day-long D3 class that John taught][43]
