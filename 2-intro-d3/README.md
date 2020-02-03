@@ -1,6 +1,6 @@
 # Intro to D3
 
-As we mentioned earlier, D3 is a big collection of modules, each of which can work on their own. To start, we will focus on a module that lets us modify the DOM. It’s called d3-selection. 
+As we mentioned earlier, D3 is a big collection of modules, each of which can work on their own. To start, we will focus on a module that lets us modify the DOM. It’s called d3-selection.
 
 [Link: Documentation for d3-selection][1]
 
@@ -12,10 +12,10 @@ To include d3.js, write the following line inside the `<body>` tag.
 
 The `../` tells the browser to look one directory up, because that’s where we’ve included the d3 files relative to `index.html` in this particular project.
 
----- 
+----
 #### Pro tip:
 > d3.js weighs in at 511kb, which is pretty hefty for a JavaScript library. Fortunately, the minified version `d3.min.js` is half the size. And if you are using a build system like Webpack, you may be able to cut the size down even further by only including the modules you actually use.
----- 
+----
 
 The d3-selection module is included in d3 by default. So if d3 is loaded properly we are ready to go. You check by opening the console and typing
 
@@ -52,7 +52,7 @@ That’s enough of the console for now. Let’s write some code in the repo. Cre
 	let chartContainer = d3.select('div#chart')
 	let width = 700
 	let height = 500
-	
+
 	let svg = chartContainer
 	  .append('svg')
 	  .attr('width', width)
@@ -65,8 +65,11 @@ A neat thing that streamlines our D3 code is that both `.append()` and `.attr()`
 Refresh your browser and look in the Elements tab of the devtools to check if the `<svg>` is there. Note that the script tag with your code needs to go after the d3 tag because it is expecting that d3 is already loaded on the page.
 
 ### Exercise
+
 Using the `.append()` and `.attr()` functions, recreate the SVG you wrote by hand in exercise 1, but this time entirely in JavaScript. Write this code in `script.js`. Delete everything from that file except for the `svg` that you just added.
+
 ---- 
+
 When you were writing code to draw the rects, did it feel like you were repeating yourself? It’s a good instinct to have when you are coding — perhaps the code you just wrote could be streamlined by writing parts of it in a for loop. We could do that, but d3 has a better way. It involves attaching data to your selection.
 
 Let’s write an array containing data specifying the size and location of the \<rect\>s making up your hotel. This is just an example, use the values you actually chose in your SVG:
@@ -129,9 +132,9 @@ And if you don’t need the index it gets even shorter:
 
 #### Exercise
 
-Finish drawing the hotel using the `.enter()` pattern described above. 
+Finish drawing the hotel using the `.enter()` pattern described above.
 
----- 
+----
 D3’s data joins are the trickiest, most counter-intuitive part to understand. Now that we have begun to practice them, let’s bring in some real data.
 
 [1]:	https://github.com/d3/d3-selection
