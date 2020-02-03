@@ -21,6 +21,9 @@ The d3-selection module is included in d3 by default. So if d3 is loaded properl
 
 	d3
 
+![GIF of devtools](https://github.com/darlacameron/intro-to-d3-nicar-2020/blob/master/img/Feb-02-2020%2020-45-13.gif?raw=true)
+
+
 If things are working properly, you’ll see an object. If you click on it you’ll see a long list of functions. This is the d3 API! It looks overwhelming, but don’t worry, we’ll focus on learning the most important functions today.
 
 The first function in the API we will use is [`select()`[2]. Type the following in the console:
