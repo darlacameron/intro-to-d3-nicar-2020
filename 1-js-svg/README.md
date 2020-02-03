@@ -65,18 +65,16 @@ let svg = d3.select('body')
 3. [Promises][6] are a way to load files that you need, such as JSON, more efficiently. Behind the scenes, functions like `d3.csv()` secretly use promises.  
 
 ```javascript
-let myFirstPromise = new Promise((resolve, reject) =\> {
+let myFirstPromise = new Promise((resolve, reject) => {
   // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
   // In this example, we use setTimeout(...) to simulate async code.
   // In reality, you will probably be using something like XHR or an HTML5 API.
   setTimeout( function() {
-```
-resolve("Success!")  // Yay! Everything went well!
-```
+    resolve("Success!")  // Yay! Everything went well!
   }, 250)
 })
 
-myFirstPromise.then((successMessage) =\> {
+myFirstPromise.then((successMessage) => {
   // successMessage is whatever we passed in the resolve(...) function above.
   // It doesn't have to be a string, but if it is only a succeed message, it probably will be.
   console.log("Yay! " + successMessage)
@@ -136,6 +134,8 @@ There are three ways to change the appearance of shapes in an SVG, and we've use
 
 ### Exercise
 - Use at least three `<rect>`s to draw a profile of the [conference hotel][8].
+
+![New Orleans Mariott](https://cache.marriott.com/marriottassets/marriott/MSYLA/msyla-exterior-0175-hor-clsc.jpg)
 
 ----
 #### Pro tip:
