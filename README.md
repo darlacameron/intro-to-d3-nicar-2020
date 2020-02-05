@@ -126,7 +126,9 @@ D3 was first released in 2012, and it's now on version 5! For security reasons, 
 
 #### Observable notebooks
 
-Mike Bostock is all in on [his cool new tool][27] for writing code. You'll see lots of newer d3 examples in this format. It's a cool tool, and we use it the Post a lot. Great development experience. you can start coding right away, imports and versioning work very naturally. It is a good way to experiment with data and see what it tells you, but it's hard to translate your code into the “real world.” It looks a lot like JavaScript but it has a lot of nonstandard stuff mixed in.
+Mike Bostock is all in on [his cool new tool][27] for writing code. It's a cool tool, and we use it the Post a lot. Great development experience. you can start coding right away, imports and versioning work very naturally. It is a good way to experiment with data and see what it tells you, but it's hard to translate your code into the “real world.” The code you write in Observable looks a lot like JavaScript but it has a lot of nonstandard stuff mixed in.
+
+Since Observable launched, it has displaced [bl.ocks.org](https://bl.ocks.org/) as the place to share D3 examples. Bostock created [a D3 Observable gallery](https://observablehq.com/@d3/gallery) to collect these. And if you are curious about how other people implement a certain visualization concept or use a particular D3 feature, Observable's search tool is a great place to start looking.
 
 #### Scrollytelling
 
