@@ -15,10 +15,6 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 - We hope you leave here today:
 	- Knowing basic D3 terminology and concepts
 	- With a foundation for getting yourself un-stuck when you inevitably run into something that doesn't work as expected.
-- We will have you work through each of the exercises in this repository in pairs. Introduce yourself to your neighbor!
-- Here's how **pair programming** works:
-	- One person types the code and the other has documentation open, telling the typist what to do next.
-	- Why pair program? Most errors are typos, and this saves you from swapping between documentation and the code.
 - We have 3 hours and 30 minutes together, and we'll take a bathroom break in the middle of the session. Feel free to get up and stretch whenever you need to.
 
 #### What is [D3][3]?
