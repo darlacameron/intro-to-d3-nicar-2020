@@ -4,7 +4,7 @@ Bring your data to life with elegant and intelligent visualizations with the D3 
 
 Prerequisites: Attendees should have some knowledge of HTML/CSS and JavaScript. Previous D3 experience is not required.
 
-Instructors: [Darla Cameron][1] from the Texas Tribune with [John Muyskens][2] from the Washington Post, here in spirit. Darla's colleagues Mandi Cai[47] and Carla Astudillo[48].
+Instructors: [Darla Cameron][1] from the Texas Tribune with [John Muyskens][2] from the Washington Post, here in spirit. Darla's colleagues [Mandi Cai][47] and [Carla Astudillo][48].
 
 ## Thanks for joining us today!
 - What do **you** want to learn? We'll do our best to address your specific questions along the way.
