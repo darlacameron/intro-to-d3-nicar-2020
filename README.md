@@ -7,8 +7,6 @@ Prerequisites: Attendees should have some knowledge of HTML/CSS and JavaScript. 
 Instructors: [Darla Cameron][1] from the Texas Tribune with [John Muyskens][2] from the Washington Post, here in spirit. Darla's colleagues Mandi Cai[47] and Carla Astudillo[48].
 
 ## Thanks for joining us today!
-
-#### What we're going to learn today
 - What do **you** want to learn? We'll do our best to address your specific questions along the way.
 	- Have any of you tried to learn D3 and gotten stuck?
 	- What did you find challenging about learning D3?
@@ -16,6 +14,13 @@ Instructors: [Darla Cameron][1] from the Texas Tribune with [John Muyskens][2] f
 	- Knowing basic D3 terminology and concepts
 	- With a foundation for getting yourself un-stuck when you inevitably run into something that doesn't work as expected.
 - We have 3 hours and 30 minutes together, and we'll take a bathroom break in the middle of the session. Feel free to get up and stretch whenever you need to.
+
+#### What we're going to learn today
+1. JS and SVGs: Advanced JS techniques that are helpful when writing D3, and then we'll draw our own SVGs
+2. Intro to D3: We'll start with key modules like d3.select
+3. Sculpting data: D3 has great helper functions to get your data into shape and scale it to your SVG
+4. Drawing a chart: Putting it all together to make a chart with axes and labels?
+5. Advanced joins and transitions: Making charts dynamic.
 
 #### What is [D3][3]?
 - While we often use D3 to make charts, it is not technically a charting library!
@@ -37,13 +42,6 @@ Instructors: [Darla Cameron][1] from the Texas Tribune with [John Muyskens][2] f
 	![heat index][image-4]
 
 - If you want to make a basic chart or map for the web that *doesn’t* need to be interactive, be republished regularly or use a crazy shape, we highly recommend good ol’ Adobe Illustrator + [ai2html][4] or [Datawrapper][5]. We'll share our detailed graphic technology decision-making process at the end of class.
-
-#### The plan for class
-1. JS and SVGs: Advanced JS techniques that are helpful when writing D3, and then we'll draw our own SVGs
-2. Intro to D3: We'll start with key modules like d3.select
-3. Sculpting data: D3 has great helper functions to get your data into shape and scale it to your SVG
-4. Drawing a chart: Putting it all together to make a chart with axes and labels?
-5. Advanced joins and transitions: Making charts dynamic.
 
 #### Time to code! Let's fire up a server.
 - Open the terminal or command line app on the laptop provided by IRE. They have helpfully installed a [http-server][6] for us.
