@@ -41,7 +41,7 @@ Instructors: [Darla Cameron][1] from the Texas Tribune with [John Muyskens][2] f
 #### The plan for class
 1. JS and SVGs: Advanced JS techniques that are helpful when writing D3, and then we'll draw our own SVGs
 2. Intro to D3: We'll start with key modules like d3.select
-3. Sculpting data: D3 has great helper functions to get your data into shape
+3. Sculpting data: D3 has great helper functions to get your data into shape and scale it to your SVG
 4. Drawing a chart: Putting it all together to make a chart with axes and labels?
 5. Advanced joins and transitions: Making charts dynamic.
 
