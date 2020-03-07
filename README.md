@@ -45,7 +45,7 @@ Instructors: [Darla Cameron][1] from the Texas Tribune with [John Muyskens][2] f
 
 #### Time to code! Let's fire up a server.
 - Open the terminal or command line app on the laptop provided by IRE. They have helpfully installed a [http-server][6] for us.
-- Navigate to the class folder, `intro-to-d3-nicar-2020`.
+- Navigate to the class folder, `Desktop/hands_on_classes/interactive_data_viz_with_d3_1001`.
 - Type `http-server -c-1` in the terminal. (The `-c-1` command disables caching.)
 - In a browser, go to `http://localhost:8080/` to view the class files.
 - We'll leave this server running all though class.
