@@ -67,14 +67,14 @@ Nest always start with `d3.nest()`. Then we define our groupings with `.key(acce
 
 Once you’ve spent some time playing with that, write the following inside `sculptData()`:
 
-  let dataYears = d3.nest()
+  	let dataYears = d3.nest()
     .key(d => d.year)
     .sortValues((b, a) => +a.healthExpPerCapita - +b.healthExpPerCapita)
     .object(data)
 
 Let’s also group by countries, this time using `.entries()`:
 
-  let dataCountries = d3.nest()
+  	let dataCountries = d3.nest()
     .key(d => d.name)
     .entries(data)
 
