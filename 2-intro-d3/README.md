@@ -26,7 +26,7 @@ The d3-selection module is included in d3 by default. So if d3 is loaded properl
 
 If things are working properly, you’ll see an object. If you click on it you’ll see a long list of functions. This is the d3 API! It looks overwhelming, but don’t worry, we’ll focus on learning the most important functions today.
 
-The first function in the API we will use is [`select()`[2]. Type the following in the console:
+The first function in the API we will use is `select()`[2]. Type the following in the console:
 
 	d3.select('body')
 

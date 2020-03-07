@@ -4,7 +4,7 @@ Bring your data to life with elegant and intelligent visualizations with the D3 
 
 Prerequisites: Attendees should have some knowledge of HTML/CSS and JavaScript. Previous D3 experience is not required.
 
-Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] from the Washington Post
+Instructors: [Darla Cameron][1] from the Texas Tribune with [John Muyskens][2] from the Washington Post, here in spirit. Darla's colleagues Mandi Cai[47] and Carla Astudillo[48].
 
 ## Thanks for joining us today!
 
@@ -37,6 +37,13 @@ Instructors: [Darla Cameron][1] from the Texas Tribune and [John Muyskens][2] fr
 	![heat index][image-4]
 
 - If you want to make a basic chart or map for the web that *doesn’t* need to be interactive, be republished regularly or use a crazy shape, we highly recommend good ol’ Adobe Illustrator + [ai2html][4] or [Datawrapper][5]. We'll share our detailed graphic technology decision-making process at the end of class.
+
+#### The plan for class
+1. JS and SVGs: Advanced JS techniques that are helpful when writing D3, and then we'll draw our own SVGs
+2. Intro to D3: We'll start with key modules like d3.select
+3. Sculpting data: D3 has great helper functions to get your data into shape
+4. Drawing a chart: Putting it all together to make a chart with axes and labels?
+5. Advanced joins and transitions: Making charts dynamic.
 
 #### Time to code! Let's fire up a server.
 - Open the terminal or command line app on the laptop provided by IRE. They have helpfully installed a [http-server][6] for us.
@@ -210,6 +217,8 @@ You can mix SVG and Canvas to get the best of both worlds. For instance, the Was
 [44]:	https://www.freecodecamp.org/learn/
 [45]:	http://learnjsdata.com/index.html
 [46]:	https://eloquentjavascript.net/
+[47]:	https://www.texastribune.org/about/staff/mandi-cai/
+[48]:	https://www.texastribune.org/about/staff/carla-astudillo/
 
 [image-1]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/shootings.png?v0
 [image-2]:	https://github.com/darlacameron/intro-to-d3-nicar-2020/raw/master/img/virus.png
