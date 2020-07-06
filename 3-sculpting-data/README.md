@@ -52,9 +52,9 @@ On top of built-in JavaScript array methods, D3 provides some useful methods of 
 You can do all kinds of fancy statistics with these methods, but for now we will stick to some simple ones that are useful when making charts, like finding minimum and maximum values in an array.
 
 	let minVal = d3.min(data, d => d.lifeExpectancy)
-	let minCountry = d3.least(data, d => d.lifeExpectancy)
+	let minCountry = d3.min(data, d => d.lifeExpectancy)
 	let maxVal = d3.max(data, d => d.lifeExpectancy)
-	let maxCountry = d3.greatest(data, d => d.lifeExpectancy)
+	let maxCountry = d3.max(data, d => d.lifeExpectancy)
 	let extentVal = d3.extent(data, d => d.lifeExpectancy)
 
 To better match the structure of our chart, we often want to group data into nested structures, which we can do with [`d3.nest()`][4]. The syntax is a bit wonky, but once you learn how to use it, you’ll find it really useful.
